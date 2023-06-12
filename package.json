@@ -12,9 +12,12 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.7.0",
     "@types/node": "^18",
-    "nuxt": "^3.5.2"
+    "nuxt": "^3.5.2",
+    "sass": "^1.58.3"
   },
   "dependencies": {
-    "vue-toastification": "2.0.0-rc.5"
+    "vue-toastification": "2.0.0-rc.5",
+    "pinia": "^2.0.32",
+    "@pinia/nuxt": "^0.4.7"
   }
 }
