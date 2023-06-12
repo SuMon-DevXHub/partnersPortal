@@ -14,7 +14,9 @@ const changePassword = ref<PersonalInformation>({
   newPassword: "",
   confirmPassword: "",
 });
-const showPassText = ref(true);
+const showCurrentPassword = ref(true);
+const showNewPassword = ref(true);
+const showConfirmPassword = ref(true);
 // Validations
 const validations = computed(() => {
   return {
@@ -35,7 +37,7 @@ const $v = useVuelidate(validations, changePassword);
         id="currentPassword"
         class="h-[50px] max-w-[424px] relative"
         name="currentPassword"
-        :type="showPassText ? 'password' : 'text'"
+        :type="showCurrentPassword ? 'password' : 'text'"
         label="Current Password"
         text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
         place-holder=""
@@ -51,10 +53,13 @@ const $v = useVuelidate(validations, changePassword);
         <template v-slot:icon-after>
           <div
             class="flex items-center h-[50px] self-end absolute right-3"
-            @click="showPassText = !showPassText"
+            @click="showCurrentPassword = !showCurrentPassword"
           >
             <ClientOnly>
-              <BaseIconEyeSlashIcon v-if="showPassText" class="text-black" />
+              <BaseIconEyeSlashIcon
+                v-if="showCurrentPassword"
+                class="text-black"
+              />
               <BaseIconEyeIcon v-else class="text-black" /> </ClientOnly
             > 
           </div>
@@ -65,7 +70,7 @@ const $v = useVuelidate(validations, changePassword);
         id="newPassword"
         class="h-[50px] max-w-[424px] relative"
         name="newPassword"
-        :type="showPassText ? 'password' : 'text'"
+        :type="showNewPassword ? 'password' : 'text'"
         label="New Password"
         text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
         place-holder=""
@@ -81,10 +86,10 @@ const $v = useVuelidate(validations, changePassword);
         <template v-slot:icon-after>
           <div
             class="flex items-center h-[50px] self-end absolute right-3"
-            @click="showPassText = !showPassText"
+            @click="showNewPassword = !showNewPassword"
           >
             <ClientOnly>
-              <BaseIconEyeSlashIcon v-if="showPassText" class="text-black" />
+              <BaseIconEyeSlashIcon v-if="showNewPassword" class="text-black" />
               <BaseIconEyeIcon v-else class="text-black" /> </ClientOnly
             > 
           </div>
@@ -95,7 +100,7 @@ const $v = useVuelidate(validations, changePassword);
         id="confirmPassword"
         class="h-[50px] max-w-[424px] relative"
         name="confirmPassword"
-        :type="showPassText ? 'password' : 'text'"
+        :type="showConfirmPassword ? 'password' : 'text'"
         label="Confirm Password"
         text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
         place-holder=""
@@ -111,10 +116,13 @@ const $v = useVuelidate(validations, changePassword);
         <template v-slot:icon-after>
           <div
             class="flex items-center h-[50px] self-end absolute right-3"
-            @click="showPassText = !showPassText"
+            @click="showConfirmPassword = !showConfirmPassword"
           >
             <ClientOnly>
-              <BaseIconEyeSlashIcon v-if="showPassText" class="text-black" />
+              <BaseIconEyeSlashIcon
+                v-if="showConfirmPassword"
+                class="text-black"
+              />
               <BaseIconEyeIcon v-else class="text-black" /> </ClientOnly
             > 
           </div>
