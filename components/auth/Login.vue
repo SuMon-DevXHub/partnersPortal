@@ -112,11 +112,8 @@ const $v = useVuelidate(validations, user);
                   >Remember me</span
                 >
               </label>
-              <p class="text-[#E4801D] md:text-lg text-md cursor-pointer">
-                Forgot Password?
-              </p>
             </div>
-            <p class="hidden mb-6 text-[#E4801D] text-lg cursor-pointer">
+            <p class="mb-6 text-[#E4801D] text-lg cursor-pointer">
               Forgot Password?
             </p>
           </div>
