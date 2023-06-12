@@ -76,7 +76,9 @@ const selectCurrentTab = (id: number) => {
                           : '#656565'
                       "
                     />
-                    <p>{{ personalSettings.title }}</p>
+                    <p class="whitespace-nowrap">
+                      {{ personalSettings.title }}
+                    </p>
                   </NuxtLink>
                 </div>
               </div>
