@@ -1,5 +1,11 @@
 <script setup lang="ts"></script>
 
+<script>
+export default {
+  
+}
+</script>
+
 <template>
   <div class="px-4 md:px-[8%]">
     <h2 class="text-[#8DB230] text-lg py-[30px]">
