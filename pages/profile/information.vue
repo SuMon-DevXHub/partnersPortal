@@ -1,8 +1,4 @@
-<script setup lang="ts">
-definePageMeta({
-  layout: "profile",
-});
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="px-4 md:px-[8%]">

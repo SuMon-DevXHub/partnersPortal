@@ -1,20 +1,5 @@
 <script setup lang="ts">
-const nuxtApp = useNuxtApp();
-
-onMounted(() => {
-  nuxtApp.$toast("clear");
-  nuxtApp.$toast("success", {
-    message: "Successfully Started",
-    className: "alert_success",
-  });
+definePageMeta({
+  middleware: ["redirect-to-login"],
 });
 </script>
-
-<template>
-  <div>
-    <h2 class="text-5xl text-center">From index page</h2>
-    <NuxtLink to="profile/information">Go to profile</NuxtLink>
-  </div>
-</template>
-
-<style scoped></style>

@@ -62,7 +62,7 @@ const submitForm = () => {
 
 <template>
   <section>
-    <div class="h-full contact-area">
+    <div class="h-full">
       <div
         class="flex flex-wrap flex-col lg:flex-row contact-wrapper lg:space-x-14 text-2xl mt-10 md:mt-22"
       >
@@ -252,12 +252,20 @@ const submitForm = () => {
               />
             </div>
 
-            <BaseButton
-              type="submit"
-              text="Submit"
-              class="bg-[#FEEBB3] text-[#294617] py-2 px-4 w-44 lg:mt-0 mt-10 text-xl font-semibold"
-              :disabled="isProcessing"
-            />
+            <div class="flex space-x-4">
+              <BaseButton
+                type="submit"
+                text="Save Changes"
+                class="bg-[#8DB230] text-[#ffffff] py-2 w-[180px] px-4 lg:mt-0 mt-10 text-xl font-semibold rounded-md"
+                :disabled="isProcessing"
+              />
+              <BaseButton
+                type="submit"
+                text="Cancel"
+                class="bg-[#E8EBED] text-[#8DB230] py-2 w-[180px] px-4 lg:mt-0 mt-10 text-xl font-semibold rounded-md"
+                :disabled="isProcessing"
+              />
+            </div>
           </form>
         </div>
       </div>

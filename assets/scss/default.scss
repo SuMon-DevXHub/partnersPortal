@@ -82,6 +82,25 @@ h6 {
   }
 }
 
+.scroll {
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-color: #feebb3 #4d6e39; /* Firefox 64 */
+  scrollbar-width: thin; /* Firefox 64 */
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #4d6e39;
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #feebb3;
+    border-radius: 5px;
+  }
+}
+
 .alert_error {
   background-color: #791714;
 }

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ButtonHTMLAttributes } from "nuxt/dist/app/compat/capi";
 
 export interface ButtonProps {
   text?: string;

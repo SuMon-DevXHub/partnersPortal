@@ -3,10 +3,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   css: [
+    "@fortawesome/fontawesome-svg-core/styles.css",
     "@/assets/css/tailwind.css",
   ],
 
-  modules: [
-    '@nuxtjs/tailwindcss',
-  ],
-})
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
+});
