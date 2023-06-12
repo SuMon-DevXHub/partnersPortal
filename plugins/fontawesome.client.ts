@@ -9,6 +9,7 @@ import {
   faCalendarDays,
   faChevronRight,
   faUserSecret,
+  faUserCircle,
   faLongArrowRight,
   faCaretUp,
   faCaretDown,
@@ -33,10 +34,11 @@ library.add(
   faSpinner,
   faTimes,
   faUser,
+  faUserCircle,
   faLock,
   faEyeSlash,
   faEye,
-  faCheck,
+  faCheck
 );
 
 export default defineNuxtPlugin((nuxtApp) => {
