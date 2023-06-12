@@ -1,19 +1,19 @@
-<script setup lang="ts">
-const nuxtApp = useNuxtApp();
-
-onMounted(() => {
-  nuxtApp.$toast("clear");
-  nuxtApp.$toast("success", {
-    message: "Successfully Started",
-    className: "alert_success",
-  });
-});
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div>
-    <h2 class="text-5xl text-center">From index page</h2>
+  <div class="landing min-h-screen pt-26">
+    <img class="w-48 mx-auto" src="~/assets/img/logo-full.png" alt="" />
+    <h1 class="text-[50px] text-center pt-[152px] text-white">
+      Partner Portal Program
+    </h1>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.landing {
+  background-image: url(~/assets/img/bacground.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+</style>
