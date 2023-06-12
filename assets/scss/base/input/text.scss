@@ -1,0 +1,26 @@
+.text-input {
+  $color: var(--color);
+  $background-color: var(--background);
+  .inputWrapper {
+    overflow: hidden;
+    .input_inner_wrapper {
+      label {
+        @apply text-white block;
+      }
+      input {
+        color: $color;
+        background-color: $background-color;
+        @apply w-full focus:outline-none;
+        &::placeholder {
+          color: var(--placeHolderColor);
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+@media (min-height: 540px) and (max-height: 703px) and (min-width: 768px) {
+  .textInput {
+    height: 36px !important;
+  }
+}

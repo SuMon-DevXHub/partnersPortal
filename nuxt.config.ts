@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   css: [
+    "@fortawesome/fontawesome-svg-core/styles.css",
     "@/assets/css/tailwind.css",
   ],
 

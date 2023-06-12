@@ -1,0 +1,45 @@
+.login_button_div {
+  // width: 390px;
+  width: 100%;
+  height: 40px;
+  // top: 360px;
+  top: 273px;
+  // right: 30px;
+  right: 0px;
+}
+.login {
+  width: 450px;
+  right: 0px;
+  background-color: #222831;
+}
+/* for slideInOut */
+.slideInOut-enter-active,
+.slideInOut-leave-active {
+  transition: right 0.5s ease-in-out;
+}
+.slideInOut-enter-from,
+.slideInOut-leave-to {
+  right: -450px;
+}
+@media (max-width: 767px) {
+  .login {
+    height: 550px;
+    width: 100%;
+    border-radius: 0 0 1.563rem 1.563rem;
+    z-index: 40;
+  }
+  /* for slideInOut */
+  .slideInOut-enter-active,
+  .slideInOut-leave-active {
+    transition: right 0.5s ease-in-out;
+  }
+  .slideInOut-enter-from,
+  .slideInOut-leave-to {
+    right: -100%;
+  }
+}
+@media (max-width: 826px) {
+  .login {
+    z-index: 31;
+  }
+}
