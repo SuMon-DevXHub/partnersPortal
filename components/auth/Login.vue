@@ -106,14 +106,14 @@ const $v = useVuelidate(validations, user);
                 <input
                   v-model="rememberMe"
                   type="checkbox"
-                  class="form-checkbox md:w-5 w-4 md:h-5 h-4 bg-offwhite-300 border-offwhite-300 text-orange-midlight"
+                  class="form-checkbox md:w-5 w-4 md:h-5 h-4 !bg-[#222831] border-offwhite-300 text-orange-midlight"
                 />
-                <span class="ml-2 text-[#C2C2C2] md:text-lg text-md"
+                <span class="ml-2 text-[#C2C2C2] md:text-lg text-base"
                   >Remember me</span
                 >
               </label>
             </div>
-            <p class="mb-6 text-[#E4801D] text-lg cursor-pointer">
+            <p class="mb-6 text-[#E4801D] md:text-lg text-base cursor-pointer">
               Forgot Password?
             </p>
           </div>
@@ -124,7 +124,7 @@ const $v = useVuelidate(validations, user);
         >
           <BaseButton
             class="w-44 h-10 text-white bg-[#E4801D] rounded-full border-none outline-none font-bold px-4"
-            text="Sign in"
+            text="Login"
           />
         </div>
       </form>
