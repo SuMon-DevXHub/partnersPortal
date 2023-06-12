@@ -14,6 +14,7 @@ const changePassword = ref<PersonalInformation>({
   newPassword: "",
   confirmPassword: "",
 });
+const showPassText = ref(true);
 // Validations
 const validations = computed(() => {
   return {
@@ -32,9 +33,9 @@ const $v = useVuelidate(validations, changePassword);
     <div class="flex flex-col space-y-16">
       <BaseInputText
         id="currentPassword"
-        class="h-[50px] max-w-[424px]"
+        class="h-[50px] max-w-[424px] relative"
         name="currentPassword"
-        type="password"
+        :type="showPassText ? 'password' : 'text'"
         label="Current Password"
         text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
         place-holder=""
@@ -46,12 +47,25 @@ const $v = useVuelidate(validations, changePassword);
         v-model.trim="$v.currentPassword.$model"
         :error="$v.currentPassword.$error"
         :error-message="$v.currentPassword.$errors"
-      />
+      >
+        <template v-slot:icon-after>
+          <div
+            class="flex items-center h-[50px] self-end absolute right-3"
+            @click="showPassText = !showPassText"
+          >
+            <ClientOnly>
+              <BaseIconEyeSlashIcon v-if="showPassText" class="text-black" />
+              <BaseIconEyeIcon v-else class="text-black" /> </ClientOnly
+            > 
+          </div>
+        </template>
+      </BaseInputText>
+
       <BaseInputText
         id="newPassword"
-        class="h-[50px] max-w-[424px]"
+        class="h-[50px] max-w-[424px] relative"
         name="newPassword"
-        type="password"
+        :type="showPassText ? 'password' : 'text'"
         label="New Password"
         text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
         place-holder=""
@@ -63,12 +77,25 @@ const $v = useVuelidate(validations, changePassword);
         v-model.trim="$v.newPassword.$model"
         :error="$v.newPassword.$error"
         :error-message="$v.newPassword.$errors"
-      />
+      >
+        <template v-slot:icon-after>
+          <div
+            class="flex items-center h-[50px] self-end absolute right-3"
+            @click="showPassText = !showPassText"
+          >
+            <ClientOnly>
+              <BaseIconEyeSlashIcon v-if="showPassText" class="text-black" />
+              <BaseIconEyeIcon v-else class="text-black" /> </ClientOnly
+            > 
+          </div>
+        </template>
+      </BaseInputText>
+
       <BaseInputText
         id="confirmPassword"
-        class="h-[50px] max-w-[424px]"
+        class="h-[50px] max-w-[424px] relative"
         name="confirmPassword"
-        type="password"
+        :type="showPassText ? 'password' : 'text'"
         label="Confirm Password"
         text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
         place-holder=""
@@ -80,7 +107,19 @@ const $v = useVuelidate(validations, changePassword);
         v-model.trim="$v.confirmPassword.$model"
         :error="$v.confirmPassword.$error"
         :error-message="$v.confirmPassword.$errors"
-      />
+      >
+        <template v-slot:icon-after>
+          <div
+            class="flex items-center h-[50px] self-end absolute right-3"
+            @click="showPassText = !showPassText"
+          >
+            <ClientOnly>
+              <BaseIconEyeSlashIcon v-if="showPassText" class="text-black" />
+              <BaseIconEyeIcon v-else class="text-black" /> </ClientOnly
+            > 
+          </div>
+        </template>
+      </BaseInputText>
 
       <div class="flex space-x-4">
         <BaseButton
