@@ -6,7 +6,7 @@ definePageMeta({
 });
 
 // types
-interface ContactForm {
+interface PersonalInformation {
   firstName: string;
   lastName: string;
   email: string;
@@ -17,7 +17,7 @@ interface ContactForm {
   question: string;
 }
 // State
-const contactForm = ref<ContactForm>({
+const personalInfo = ref<PersonalInformation>({
   firstName: "",
   lastName: "",
   email: "",
@@ -42,7 +42,7 @@ const validations = computed(() => {
     question: { required, maxLength: maxLength(500) },
   };
 });
-const $v = useVuelidate(validations, contactForm);
+const $v = useVuelidate(validations, personalInfo);
 const currentPhonePlaceholder = computed(() => {
   return countryCode.value === "+1" ? "###-###-####" : "####-######";
 });

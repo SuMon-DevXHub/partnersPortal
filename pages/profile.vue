@@ -44,8 +44,12 @@ const selectCurrentTab = (id: number) => {
           <div
             class="w-[30%] border-r-4 border-[#8DB230] leftWrapper px-[30px]"
           >
-            <div class="text-center">
-              <div><img src="" alt="" srcset="" /></div>
+            <div class="text-center mt-[50px]">
+              <div
+                class="flex justify-center items-center w-[120px] h-[120px] border-2 border-[#8DB230] rounded-full mx-auto"
+              >
+                <BaseIconUserImageIcon class="w-[110px] h-[110px]" />
+              </div>
               <div class="text-[#8DB230] font-bold text-2xl">Jhon Smit</div>
               <div class="text-[#656565] text-base">
                 <p>bob@example.com</p>
