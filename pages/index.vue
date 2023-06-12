@@ -13,6 +13,7 @@ onMounted(() => {
 <template>
   <div>
     <h2 class="text-5xl text-center">From index page</h2>
+    <NuxtLink to="profile/information">Go to profile</NuxtLink>
   </div>
 </template>
 
