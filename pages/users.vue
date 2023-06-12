@@ -101,7 +101,7 @@ const users = [
       >
         <template v-slot:icon-before>
           <ClientOnly>
-            <BaseIconSearch class="text-[#7D80BD] pl-4" />
+            <BaseIconSearch class="text-[#7D80BD] pl-4 " />
           </ClientOnly>
         </template>
       </BaseInputText>
@@ -218,6 +218,7 @@ const users = [
 <style lang="scss" scoped>
 .web-card {
   @apply bg-white rounded-3xl overflow-hidden;
+  height: calc(100% - 130px);
 }
 .card-header {
   @apply bg-[#7D80BD] text-center py-2;
