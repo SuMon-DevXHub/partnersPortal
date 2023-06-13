@@ -206,7 +206,7 @@ export default {
     box-shadow: 0px 0px 0px;
     .country-input {
       @apply h-10 md:h-14;
-      background-color: #d1d5db;
+      background-color: #e8ebed;
     }
     .select-toggle {
       @apply top-1 md:top-2.5;
