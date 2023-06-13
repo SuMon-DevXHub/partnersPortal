@@ -64,22 +64,24 @@ const submitForm = () => {
   <section>
     <div class="h-full">
       <div
-        class="flex flex-wrap flex-col lg:flex-row contact-wrapper lg:space-x-14 text-2xl mt-10 md:mt-22"
+        class="flex flex-wrap flex-col lg:flex-row contact-wrapper lg:space-x-14 text-lg md:text-xl lg:text-2xl mt-6 md:mt-22 w-full"
       >
-        <div class="flex-grow mt-12 lg:mt-0">
+        <div class="w-full md:flex-grow mt-12 lg:mt-0">
           <form
-            class="flex flex-col space-y-7 w-full h-full lg:items-start items-center"
+            class="flex flex-col space-y-6 md:space-y-7 w-full h-full lg:items-start items-center"
             novalidate
             @submit.prevent="submitForm"
           >
-            <div class="flex w-full justify-between space-x-4">
+            <div
+              class="flex flex-col md:flex-row w-full justify-between space-y-6 md:space-y-0 md:space-x-4"
+            >
               <BaseInputText
                 id="firstName"
-                class="w-1/2"
+                class="w-full md:w-1/2"
                 name="firstName"
                 type="text"
                 label="First Name"
-                text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
+                text-input="px-4 py-2 md:py-3 rounded-md shadow-3xl text-base md:text-lg lg:text-xl xl:text-2xl"
                 place-holder="Write your name"
                 placeHolderClass="placeholder:text-lg"
                 input-wrapper="inputWrapper"
@@ -92,11 +94,11 @@ const submitForm = () => {
               />
               <BaseInputText
                 id="lastName"
-                class="w-1/2"
+                class="w-full md:w-1/2"
                 name="lastName"
                 type="text"
                 label="Last Name"
-                text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
+                text-input="px-4 py-2 md:py-3 rounded-md shadow-3xl text-base md:text-lg lg:text-xl xl:text-2xl"
                 place-holder="Write your name"
                 placeHolderClass="placeholder:text-lg"
                 input-wrapper="inputWrapper"
@@ -109,14 +111,16 @@ const submitForm = () => {
               />
             </div>
 
-            <div class="flex w-full justify-between space-x-4">
+            <div
+              class="flex flex-col md:flex-row w-full justify-between space-y-6 md:space-y-0 md:space-x-4"
+            >
               <BaseInputText
                 id="email"
-                class="w-1/2"
+                class="w-full md:w-1/2"
                 name="email"
                 type="email"
                 label="Email Address"
-                text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
+                text-input="px-4 py-2 md:py-3 rounded-md shadow-3xl text-base md:text-lg lg:text-xl xl:text-2xl"
                 place-holder="Write your email address"
                 placeHolderClass="placeholder:text-lg"
                 input-wrapper="inputWrapper"
@@ -130,9 +134,7 @@ const submitForm = () => {
 
               <!-- Phone Number Input -->
               <div class="w-full md:w-1/2">
-                <label
-                  for="phoneNumber"
-                  class="font-medium hidden md:block text-[#8DB230]"
+                <label for="phoneNumber" class="font-medium text-[#8DB230]"
                   >Phone</label
                 >
                 <ClientOnly>
@@ -160,14 +162,16 @@ const submitForm = () => {
               </div>
             </div>
 
-            <div class="flex w-full justify-between space-x-4">
+            <div
+              class="flex flex-col md:flex-row w-full justify-between space-y-6 md:space-y-0 md:space-x-4"
+            >
               <BaseInputText
                 id="dateOfBirth"
-                class="w-1/2"
+                class="w-full md:w-1/2"
                 name="dateOfBirth"
                 type="dateOfBirth"
                 label="Date of Birth"
-                text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
+                text-input="px-4 py-2 md:py-3 rounded-md shadow-3xl text-base md:text-lg lg:text-xl xl:text-2xl"
                 place-holder="Write your Date of Birth"
                 placeHolderClass="placeholder:text-lg"
                 input-wrapper="inputWrapper"
@@ -179,7 +183,7 @@ const submitForm = () => {
                 :error-message="$v.dateOfBirth.$errors"
               />
 
-              <div class="text-[#8DB230] w-1/2 flex flex-col">
+              <div class="text-[#8DB230] w-full md:w-1/2 flex flex-col">
                 <div>Gender</div>
                 <div class="flex flex-grow space-x-8 items-center">
                   <div class="flex items-center">
@@ -215,14 +219,16 @@ const submitForm = () => {
               </div>
             </div>
 
-            <div class="flex w-full justify-between space-x-4">
+            <div
+              class="flex flex-col md:flex-row w-full justify-between space-y-6 md:space-y-0 md:space-x-4"
+            >
               <BaseInputText
                 id="address"
-                class="w-1/2"
+                class="w-full md:w-1/2"
                 name="address"
                 type="text"
                 label="Address"
-                text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
+                text-input="px-4 py-2 md:py-3 rounded-md shadow-3xl text-base md:text-lg lg:text-xl xl:text-2xl"
                 place-holder="Write your address"
                 placeHolderClass="placeholder:text-lg"
                 input-wrapper="inputWrapper"
@@ -235,11 +241,11 @@ const submitForm = () => {
               />
               <BaseInputText
                 id="postalCode"
-                class="w-1/2"
+                class="w-full md:w-1/2"
                 name="postalCode"
                 type="text"
                 label="Postal Code"
-                text-input="px-4 py-3 rounded-md shadow-3xl xl:text-2xl md:text-xl text-lg"
+                text-input="px-4 py-2 md:py-3 rounded-md shadow-3xl text-base md:text-lg lg:text-xl xl:text-2xl"
                 place-holder="Your postal code"
                 placeHolderClass="placeholder:text-lg"
                 input-wrapper="inputWrapper"
@@ -252,17 +258,17 @@ const submitForm = () => {
               />
             </div>
 
-            <div class="flex space-x-4 pt-20">
+            <div class="flex space-x-4 py-10 md:py-0 md:pt-20">
               <BaseButton
                 type="submit"
                 text="Save Changes"
-                class="bg-[#8DB230] text-[#ffffff] py-2 w-[180px] px-4 lg:mt-0 mt-10 text-xl font-semibold rounded-md"
+                class="bg-[#8DB230] text-[#ffffff] py-2 whitespace-nowrap w-[152px] md:w-[180px] px-4 text-base md:text-xl font-semibold rounded-md"
                 :disabled="isProcessing"
               />
               <BaseButton
                 type="submit"
                 text="Cancel"
-                class="bg-[#E8EBED] text-[#8DB230] py-2 w-[180px] px-4 lg:mt-0 mt-10 text-xl font-semibold rounded-md"
+                class="bg-[#E8EBED] text-[#8DB230] py-2 whitespace-nowrap w-[152px] md:w-[180px] px-4 text-base md:text-xl font-semibold rounded-md"
                 :disabled="isProcessing"
               />
             </div>

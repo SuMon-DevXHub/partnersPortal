@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <img src="~/assets/img/icon/menu.svg" alt="SharpArchive menu icon" />
+  <img src="~/assets/img/icon/pencil.svg" alt="SharpArchive user image icon" />
 </template>
 
 <style scoped></style>

@@ -1,46 +1,61 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="xl:px-4">
-    <h2 class="text-[#8DB230] text-lg pt-[30px]">Account Security</h2>
-    <p class="text-[#656565] text-base">Update your account security</p>
-    <div class="px-4 xl:px-8 mt-10">
-      <div class="text-xl font-bold">Two-Factor Authentication</div>
-      <p class="mt-6">
+  <div class="px-2 md:px-4 xl:px-8 py-4">
+    <!-- <h2 class="text-[#8DB230] text-lg pt-[30px]">Account Security</h2> -->
+    <p class="text-[#8DB230] text-lg text-center md:text-left">
+      Update your account security
+    </p>
+    <div class="mt-10">
+      <div class="text-lg md:text-xl font-bold text-[#8DB230]">
+        Two-Factor Authentication
+      </div>
+      <p class="mt-6 text-[#656565]">
         Your account is secured with two-factor authentication.
       </p>
-      <div class="flex flex-col ml-4 space-y-3 mt-4">
+      <div class="flex flex-col space-y-3 mt-4">
         <div class="flex justify-between w-full">
-          <div class="font-bold w-1/3">Delivery Preference</div>
-          <div class="w-1/3">email</div>
+          <div class="flex flex-col md:flex-row md:w-2/3">
+            <div class="font-bold md:w-1/2 text-[#656565]">
+              Delivery Preference
+            </div>
+            <div class="md:w-1/2 text-[#656565]">Email</div>
+          </div>
           <NuxtLink
             to="/profile/information"
-            class="text-[#8DB230] cursor-pointer w-1/3 text-center"
-            >edit</NuxtLink
+            class="text-[#8DB230] cursor-pointer md:w-1/3 text-center flex justify-end"
           >
+            <BaseIconEditIcon />
+          </NuxtLink>
         </div>
 
         <div class="flex justify-between w-full">
-          <div class="font-bold w-1/3">Email Address</div>
-          <div class="w-1/3">hudacse6@gmail.com</div>
+          <div class="flex flex-col md:flex-row md:w-2/3">
+            <div class="font-bold md:w-1/2 text-[#656565]">Email Address</div>
+            <div class="md:w-1/2 text-[#656565]">hudacse6@gmail.com</div>
+          </div>
           <NuxtLink
             to="/profile/information"
-            class="text-[#8DB230] cursor-pointer w-1/3 text-center"
-            >edit</NuxtLink
+            class="text-[#8DB230] cursor-pointer md:w-1/3 text-center flex justify-end"
           >
+            <BaseIconEditIcon />
+          </NuxtLink>
         </div>
 
         <div class="flex justify-between w-full">
-          <div class="font-bold w-1/3">Phone Number</div>
-          <div class="w-1/3">+8801745-969697</div>
+          <div class="flex flex-col md:flex-row md:w-2/3">
+            <div class="font-bold md:w-1/2 text-[#656565]">Phone Number</div>
+            <div class="md:w-1/2 text-[#656565]">+8801745-969697</div>
+          </div>
           <NuxtLink
             to="/profile/information"
-            class="text-[#8DB230] cursor-pointer w-1/3 text-center"
-            >edit</NuxtLink
+            class="text-[#8DB230] cursor-pointer md:w-1/3 text-center flex justify-end"
           >
+            <BaseIconEditIcon />
+          </NuxtLink>
         </div>
       </div>
-      <div class="text-[#8DB230] text-end mt-4">
+      <div class="text-[#8DB230] text-center font-bold mt-10">
         Turn off two-factor authentication
       </div>
     </div>
