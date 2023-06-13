@@ -41,10 +41,10 @@
       background-color: dodgerblue !important; /* for IE */
       color: white !important;
     }
-    select option:disabled {
-      color: var(--color) !important;
-      font-weight: bold;
-    }
+    // select option:disabled {
+    //   color: var(--color) !important;
+    //   font-weight: bold;
+    // }
   }
   select.searchPageScrollWidth::-webkit-scrollbar {
     width: 2px;
