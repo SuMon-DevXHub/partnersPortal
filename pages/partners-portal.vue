@@ -3,6 +3,19 @@ definePageMeta({
   layout: "home",
 });
 
+const $config = useRuntimeConfig();
+const route = useRoute();
+useHead(() => ({
+  title: "Partners Portal",
+  link: [
+    {
+      hid: "canonical",
+      rel: "canonical",
+      href: `${$config.public.siteUrl}/${route.name}`,
+    },
+  ],
+}));
+
 const portalHistory = ref({
   totalIncome: "$3511.98",
   monthlyNetProfit: "$129.98",

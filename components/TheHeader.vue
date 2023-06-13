@@ -1,9 +1,10 @@
 <script setup>
 import Logo from "~/assets/img/icon/logo.svg";
-import Filter from "assets/img/icon/filter.svg";
+import { useFooterStore } from "~/stores/the-footer";
 
 const logo = ref(Logo);
-const filter = ref(Filter);
+// pinia
+const { setIsShowFooter } = useFooterStore();
 </script>
 
 <template>
@@ -40,7 +41,7 @@ const filter = ref(Filter);
     <header
       class="md:hidden relative flex justify-between items-center flex-nowrap py-3 px-3 shadow-lg rounded-b-2xl bg-[#171D26]"
     >
-      <div class="w-[21px] h-[24px]">
+      <div class="w-[21px] h-[24px]" @click="setIsShowFooter()">
         <ClientOnly>
           <fa
             class="w-full h-full"
