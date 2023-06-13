@@ -145,7 +145,7 @@ const submitForm = () => {
                     color="#656565"
                     class="phoneNumberInputPartner"
                     :place-holder="currentPhonePlaceholder"
-                    background="#D1D5DB"
+                    background="#E8EBED"
                     input-classes="placeholder-gray-1200 placeholder-opacity-50
                     text-gray-1200 bg-gray-1100 py-3 px-4 customPhoneInputClass h-10 md:h-14"
                     @countryCode="countryCodeEvent"
