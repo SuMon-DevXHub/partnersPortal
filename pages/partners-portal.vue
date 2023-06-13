@@ -15,7 +15,7 @@ const payoutHistory = ref([
     amount: "$500",
     paymentethod: "PayPal",
     status: "Approved",
-    Approved: "",
+    approved: "",
   },
   {
     date: "Jan 22, 2022",
@@ -29,7 +29,7 @@ const payoutHistory = ref([
     amount: "$500",
     paymentethod: "PayPal",
     status: "Approved",
-    Approved: "",
+    approved: "",
   },
   {
     date: "Jan 22, 2022",
@@ -186,7 +186,9 @@ const payoutHistory = ref([
                   <span class="table-span">{{ payout.status }}</span>
                 </td>
                 <td class="table-td">
-                  <span class="table-span">{{ payout.action }}</span>
+                  <span class="table-span"
+                    ><fa class="text-[#00CC44]" :icon="['fas', 'fa-download']"
+                  /></span>
                 </td>
               </tr>
             </tbody>
@@ -218,6 +220,9 @@ const payoutHistory = ref([
 .table-th {
   @apply md:px-6 px-6 md:py-2 py-2 text-left tracking-wider xl:text-lg md:text-base text-sm md:font-bold whitespace-nowrap text-[#434343];
 }
+.table-th:nth-child(n-1){
+  text-align: center;
+}
 .tooltip {
   @apply absolute 
   text-white 
@@ -243,6 +248,9 @@ const payoutHistory = ref([
 }
 .table-td {
   @apply md:px-6 px-6 md:py-2 py-1.5 text-left whitespace-nowrap;
+}
+.table-td:nth-child(n-1) {
+  text-align: center;
 }
 .table-span {
   @apply text-gray-500 xl:text-xl md:text-lg text-base;
