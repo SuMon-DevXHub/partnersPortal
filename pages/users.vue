@@ -83,6 +83,9 @@ const users = [
     lastMonthSpend: "$100",
   },
 ];
+
+const pastMonths = ref("Past Month");
+const showVCalender = ref(true);
 </script>
 
 <template>
@@ -121,21 +124,37 @@ const users = [
           opacity="0.5"
           :options="methods"
         />
-        <BaseInputSelect
-          id="methods"
-          v-model="method"
-          class="md:text-lg text-base"
-          text-input="textInput w-[200px] md:py-1.5 py-2"
-          toggle-button="toggleButton"
-          background="#7D80BD"
-          color="#ffffff"
-          caret-bg="#7D80BD"
-          caret-color="#ffffff"
-          :place-holder="'Select'"
-          :place-holder-disabled="true"
-          opacity="0.5"
-          :options="methods"
-        />
+        <!-- <div
+          class="w-full text-lg font-bold relative group cursor-pointer"
+          @click="vCalenderShow()"
+          @mouseleave.stop="vCalenderHide()"
+        >
+          <select-input
+            id="pastMonth3"
+            v-model="pastMonths"
+            :show-v-calender="showVCalender"
+            class="not-clickable selectSearch"
+            class-style-name="searchPageScrollStyle searchPageScrollWidth search-select-input"
+            :place-holder="pastMonths"
+            color="#F8F8F8"
+            value="Past Month"
+            background="#7D80BD"
+            caret-bg="#7D80BD"
+            scroll-color="#5b5fcc"
+          >
+          </select-input>
+          <div
+            class="w-100 shadow-xl absolute top-13.3 lg:right-0 md:-right-0 z-999999 block cursor-pointer bg-white rounded-3xl border-top"
+          >
+            <v-calender-with-preset
+              :show-v-calender="showVCalender"
+              date-picker-color="search"
+              @dateRange="pastMonthDateRageEvent"
+              @pastmonth="pastMonthsValue"
+              @hide-v-calender="vCalenderHide()"
+            />
+          </div>
+        </div> -->
       </div>
     </div>
 
