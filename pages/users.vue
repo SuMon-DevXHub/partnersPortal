@@ -16,6 +16,13 @@ const methods = [
   { id: 2, text: "Active", value: "2" },
   { id: 3, text: "Inactive", value: "3" },
 ];
+const date = ref("Sign Up Date");
+const dates = [
+  { id: 1, text: "13 July 2023", value: "1" },
+  { id: 2, text: "20 July 2023", value: "2" },
+  { id: 3, text: "23 July 2023", value: "3" },
+  { id: 4, text: "30 July 2023", value: "4" },
+];
 
 const users = [
   {
@@ -136,51 +143,21 @@ const showVCalender = ref(false);
           opacity="0.5"
           :options="methods"
         />
-        <div
-          class="w-[200px] text-lg font-bold relative group cursor-pointer"
-          @click="vCalenderShow()"
-          @mouseleave.stop="vCalenderHide()"
-        >
-          <BaseInputSelect
-            id="pastMonth3"
-            v-model="pastMonths"
-            class="md:text-lg text-base not-clickable selectSearch"
-            class-style-name="searchPageScrollStyle searchPageScrollWidth search-select-input"
-            text-input="textInput w-[200px] md:py-1.5 py-2"
-            :place-holder="pastMonths"
-            color="#ffffff"
-            toggle-button="toggleButton"
-            background="#7D80BD"
-            caret-bg="#7D80BD"
-            caret-color="#ffffff"
-            :place-holder-disabled="true"
-            opacity="0.5"
-          />
-          <!-- <BaseInputSelect
-            id="pastMonth3"
-            v-model="pastMonths"
-            :toggle-select="showVCalender"
-            class="not-clickable selectSearch"
-            class-style-name="searchPageScrollStyle searchPageScrollWidth search-select-input"
-            :place-holder="pastMonths"
-            color="#F8F8F8"
-            value="Past Month"
-            background="#7D80BD"
-            caret-bg="#7D80BD"
-            scroll-color="#5b5fcc"
-          /> -->
-          <div
-            class="w-[400px] shadow-xl absolute top-13.3 lg:right-0 md:-right-0 z-50 block cursor-pointer bg-white rounded-3xl border-top"
-          >
-            <v-calender-with-preset
-              :show-v-calender="showVCalender"
-              date-picker-color="search"
-              @dateRange="pastMonthDateRageEvent"
-              @pastmonth="pastMonthsValue"
-              @hide-v-calender="vCalenderHide()"
-            />
-          </div>
-        </div>
+        <BaseInputSelect
+          id="date"
+          v-model="date"
+          class="md:text-lg text-base"
+          text-input="textInput w-[200px] md:py-1.5 py-2"
+          toggle-button="toggleButton"
+          background="#7D80BD"
+          color="#ffffff"
+          caret-bg="#7D80BD"
+          caret-color="#ffffff"
+          :place-holder="'Sign Up Date'"
+          :place-holder-disabled="true"
+          opacity="0.5"
+          :options="dates"
+        />
       </div>
     </div>
     <div
@@ -239,57 +216,27 @@ const showVCalender = ref(false);
           opacity="0.5"
           :options="methods"
         />
-        <div
-          class="w-full text-lg font-bold relative group cursor-pointer"
-          @click="vCalenderShow()"
-          @mouseleave.stop="vCalenderHide()"
-        >
-          <BaseInputSelect
-            id="pastMonth3"
-            v-model="pastMonths"
-            class="md:text-lg text-base not-clickable selectSearch"
-            class-style-name="searchPageScrollStyle searchPageScrollWidth search-select-input"
-            text-input="textInput w-full md:py-1.5 py-2"
-            :place-holder="pastMonths"
-            color="#ffffff"
-            toggle-button="toggleButton"
-            background="#7D80BD"
-            caret-bg="#7D80BD"
-            caret-color="#ffffff"
-            :place-holder-disabled="true"
-            opacity="0.5"
-          />
-          <!-- <BaseInputSelect
-            id="pastMonth3"
-            v-model="pastMonths"
-            :toggle-select="showVCalender"
-            class="not-clickable selectSearch"
-            class-style-name="searchPageScrollStyle searchPageScrollWidth search-select-input"
-            :place-holder="pastMonths"
-            color="#F8F8F8"
-            value="Past Month"
-            background="#7D80BD"
-            caret-bg="#7D80BD"
-            scroll-color="#5b5fcc"
-          /> -->
-          <div
-            class="w-[400px] shadow-xl absolute top-13.3 lg:right-0 md:-right-0 z-50 block cursor-pointer bg-white rounded-3xl border-top"
-          >
-            <v-calender-with-preset
-              :show-v-calender="showVCalender"
-              date-picker-color="search"
-              @dateRange="pastMonthDateRageEvent"
-              @pastmonth="pastMonthsValue"
-              @hide-v-calender="vCalenderHide()"
-            />
-          </div>
-        </div>
+        <BaseInputSelect
+          id="date"
+          v-model="date"
+          class="md:text-lg text-base"
+          text-input="textInput w-full md:py-1.5 py-2"
+          toggle-button="toggleButton"
+          background="#7D80BD"
+          color="#ffffff"
+          caret-bg="#7D80BD"
+          caret-color="#ffffff"
+          :place-holder="'Sign Up Date'"
+          :place-holder-disabled="true"
+          opacity="0.5"
+          :options="dates"
+        />
       </div>
     </Transition>
 
     <div class="web-card w-full h-full md:mt-[30px]">
       <div class="card-header">
-        <h3 class="card-title">Users</h3>
+        <h3 class="card-title">Filter</h3>
       </div>
       <div class="card-body scroll">
         <table class="min-w-full table-wrapper">
@@ -389,7 +336,7 @@ const showVCalender = ref(false);
 .web-card {
   @apply bg-white rounded-3xl overflow-hidden;
   height: calc(100% - 130px);
-  box-shadow: 2px 2px 4px #2E2B2B29;
+  box-shadow: 2px 2px 4px #2e2b2b29;
 }
 .card-header {
   @apply bg-[#7D80BD] text-center py-2;
