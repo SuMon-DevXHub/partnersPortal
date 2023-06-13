@@ -6,9 +6,9 @@
     @mouseleave="notSqueeze()"
   >
     <div class="sidebar__header">
-      <a href="/" target="_self" rel="noopener noreferrer" class="h-full">
-        <BaseIconSharpArchiveLogo />
-      </a>
+      <!-- <a href="/" target="_self" rel="noopener noreferrer" class="h-full"> -->
+      <BaseIconSharpArchiveLogo />
+      <!-- </a> -->
     </div>
     <div ref="sidemenu" class="sidemenu flex flex-col">
       <!-- <div
