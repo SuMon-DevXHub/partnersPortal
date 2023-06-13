@@ -1,11 +1,13 @@
 <script setup>
 import Logo from "~/assets/img/icon/logo.svg";
 import { storeToRefs } from "pinia";
+import { useHeaderStore } from "~/stores/the-header";
 import { useFooterStore } from "~/stores/the-footer";
 import { useProfileStore } from "~/stores/the-profile";
 
 const logo = ref(Logo);
 // pinia
+const { setIsUserModal } = useHeaderStore();
 const { setIsShowFooter } = useFooterStore();
 const { setIsShowProfile } = useProfileStore();
 const { isShowFooter } = storeToRefs(useFooterStore());
@@ -74,7 +76,7 @@ const { isShowFooter } = storeToRefs(useFooterStore());
         />
       </div>
       <div class="flex space-x-4">
-        <div v-if="$route.name === 'users'">
+        <div v-if="$route.name === 'users'" @click="setIsUserModal(true)">
           <svg
             id="Capa_1"
             enable-background="new 0 0 512 512"
