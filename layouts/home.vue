@@ -8,7 +8,7 @@ const { isSqueeze } = storeToRefs(useSidebarStore());
 <template>
   <div class="w-full h-screen overflow-hidden bg-ash-1000 relative">
     <TheHeader />
-    <div class="flex w-full md:h-[calc(100%-62px)] h-full">
+    <div class="flex w-full md:h-[calc(100%-62px)] h-[calc(100%-52px)]">
       <LazyTheSidebar />
       <div
         class="w-full h-full"
