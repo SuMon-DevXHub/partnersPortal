@@ -353,7 +353,7 @@ const showVCalender = ref(false);
 //   @apply overflow-auto scroll;
 // }
 .table-th {
-  @apply md:px-6 px-6 md:py-2 py-2 text-left tracking-wider xl:text-lg md:text-base text-sm md:font-bold whitespace-nowrap md:text-ash-default text-yellow-600;
+  @apply md:px-6 px-6 md:py-2 py-2 text-left tracking-wider xl:text-lg md:text-base text-sm md:font-bold whitespace-nowrap text-ash-default;
 }
 .tooltip {
   @apply absolute 
