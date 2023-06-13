@@ -13,7 +13,7 @@ const { isSqueeze } = storeToRefs(useSidebarStore());
         <LazyTheSidebar />
       </div>
       <div
-        class="w-auto h-full flex-grow"
+        class="w-full h-full"
         :class="
           isSqueeze
             ? 'transition-all duration-500 ease-in-out delay-500 ml-26'

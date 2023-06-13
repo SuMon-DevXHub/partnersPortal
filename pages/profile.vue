@@ -6,6 +6,8 @@ import SocialProfileIcon from "~/components/base/icon/SocialProfileIcon.vue";
 
 const currentActiveTab = ref(0);
 
+const route = useRoute();
+
 const personalSettingsTab = ref([
   {
     id: 1,
@@ -34,6 +36,18 @@ onMounted(() => {
 const selectCurrentTab = (id: number) => {
   currentActiveTab.value = id;
 };
+
+watch(
+  () => route,
+  (value) => {
+    if (value.name === "profile-information") {
+      selectCurrentTab(personalSettingsTab.value[0].id);
+    }
+  },
+  {
+    deep: true,
+  }
+);
 </script>
 <template>
   <NuxtLayout name="home">
