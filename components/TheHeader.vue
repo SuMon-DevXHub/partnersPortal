@@ -1,9 +1,14 @@
 <script setup>
+import { storeToRefs } from "pinia";
+import { useHeaderStore } from "~/stores/the-header";
 import Logo from "~/assets/img/icon/logo.svg";
 import Filter from "assets/img/icon/filter.svg";
 
 const logo = ref(Logo);
 const filter = ref(Filter);
+
+const { setIsUserModal } = useHeaderStore();
+const { isUserModal } = storeToRefs(useHeaderStore());
 </script>
 
 <template>
@@ -63,7 +68,7 @@ const filter = ref(Filter);
         />
       </div>
       <div class="flex space-x-4">
-        <div v-if="$route.name === 'users'">
+        <div v-if="$route.name === 'users'" @click="setIsUserModal(!isUserModal)">
           <svg
             id="Capa_1"
             enable-background="new 0 0 512 512"

@@ -1,7 +1,13 @@
 <script setup>
+import { storeToRefs } from "pinia";
+import { useHeaderStore } from "~/stores/the-header";
+
 definePageMeta({
   layout: "home",
 });
+
+const { setIsUserModal } = useHeaderStore();
+const { isUserModal } = storeToRefs(useHeaderStore());
 
 const search = ref("");
 const method = ref("State");
@@ -85,7 +91,7 @@ const users = [
 ];
 
 const pastMonths = ref("Past Month");
-const showVCalender = ref(true);
+const showVCalender = ref(false);
 // const vCalenderShow = () => {
 //   showVCalender.value = true;
 // };
@@ -95,8 +101,8 @@ const showVCalender = ref(true);
 </script>
 
 <template>
-  <div class="flex flex-col p-[30px] w-full h-full">
-    <div class="flex flex-row items-center justify-between w-full">
+  <div class="flex flex-col p-[30px] w-full h-full relative">
+    <div class="hidden md:flex flex-row items-center justify-between w-full">
       <BaseInputText
         id="search"
         type="text"
@@ -177,8 +183,111 @@ const showVCalender = ref(true);
         </div>
       </div>
     </div>
+    <div
+      class="md:hidden overlay"
+      v-if="isUserModal"
+      @click="setIsUserModal(false)"
+    ></div>
+    <Transition name="slideInOut">
+      <div
+        v-if="isUserModal"
+        class="z-30 flex md:hidden top-0 right-0 fixed flex-col space-y-4 w-full bg-[#171D26] rounded-b-3xl p-2.5 pb-8"
+      >
+        <div
+          class="flex justify-between filter-head text-xl text-white px-2 mb-8 pt-2"
+        >
+          <h5 class="text-2xl">Users</h5>
+          <h2>
+            <ClientOnly>
+              <fa
+                class="text-[#7D80BD] text-2xl font-normal"
+                :icon="['fas', 'times']"
+                @click="setIsUserModal(false)"
+              />
+            </ClientOnly>
+          </h2>
+        </div>
+        <BaseInputText
+          id="search"
+          type="text"
+          v-model="search"
+          text-input="textInput px-4 pl-0 py-2 "
+          input-wrapper="inputWrapper rounded-full shadow-[0px_2px_4px_#0000004D] bg-white"
+          place-holder-color="#7D80BD"
+          place-holder="Search"
+          color="#7D80BD"
+          background="#FFFFFF"
+        >
+          <template v-slot:icon-before>
+            <ClientOnly>
+              <BaseIconSearch class="text-[#7D80BD] pl-4" />
+            </ClientOnly>
+          </template>
+        </BaseInputText>
+        <BaseInputSelect
+          id="methods"
+          v-model="method"
+          class="md:text-lg text-base"
+          text-input="textInput w-full md:py-1.5 py-2"
+          toggle-button="toggleButton"
+          background="#7D80BD"
+          color="#ffffff"
+          caret-bg="#7D80BD"
+          caret-color="#ffffff"
+          :place-holder="'State'"
+          :place-holder-disabled="true"
+          opacity="0.5"
+          :options="methods"
+        />
+        <div
+          class="w-full text-lg font-bold relative group cursor-pointer"
+          @click="vCalenderShow()"
+          @mouseleave.stop="vCalenderHide()"
+        >
+          <BaseInputSelect
+            id="pastMonth3"
+            v-model="pastMonths"
+            class="md:text-lg text-base not-clickable selectSearch"
+            class-style-name="searchPageScrollStyle searchPageScrollWidth search-select-input"
+            text-input="textInput w-full md:py-1.5 py-2"
+            :place-holder="pastMonths"
+            color="#ffffff"
+            toggle-button="toggleButton"
+            background="#7D80BD"
+            caret-bg="#7D80BD"
+            caret-color="#ffffff"
+            :place-holder-disabled="true"
+            opacity="0.5"
+          />
+          <!-- <BaseInputSelect
+            id="pastMonth3"
+            v-model="pastMonths"
+            :toggle-select="showVCalender"
+            class="not-clickable selectSearch"
+            class-style-name="searchPageScrollStyle searchPageScrollWidth search-select-input"
+            :place-holder="pastMonths"
+            color="#F8F8F8"
+            value="Past Month"
+            background="#7D80BD"
+            caret-bg="#7D80BD"
+            scroll-color="#5b5fcc"
+          /> -->
+          <div
+            class="w-[400px] shadow-xl absolute top-13.3 lg:right-0 md:-right-0 z-50 block cursor-pointer bg-white rounded-3xl border-top"
+          >
+            <v-calender-with-preset
+              :show-v-calender="showVCalender"
+              date-picker-color="search"
+              @dateRange="pastMonthDateRageEvent"
+              @pastmonth="pastMonthsValue"
+              @hide-v-calender="vCalenderHide()"
+            />
+          </div>
+        </div>
+      </div>
+    </Transition>
 
-    <div class="web-card w-full h-full mt-[30px]">
+    <div class="web-card w-full h-full md:mt-[30px]">
       <div class="card-header">
         <h3 class="card-title">Users</h3>
       </div>
@@ -255,6 +364,28 @@ const showVCalender = ref(true);
 </template>
 
 <style lang="scss" scoped>
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 1;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: all;
+}
+/* for slideInOut */
+.slideInOut-enter-active,
+.slideInOut-leave-active {
+  transition: right 0.5s ease-in-out;
+}
+.slideInOut-enter-from,
+.slideInOut-leave-to {
+  right: -100%;
+}
 .web-card {
   @apply bg-white rounded-3xl overflow-hidden;
   height: calc(100% - 130px);
