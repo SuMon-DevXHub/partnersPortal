@@ -274,7 +274,7 @@ export default {
 .sidebar {
   height: 65px;
   bottom: -65px;
-  z-index: 300;
+  // z-index: 300;
   background-color: #171d26;
   border-radius: 16px 16px 0 0;
   &__header {

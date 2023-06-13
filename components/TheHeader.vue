@@ -1,12 +1,16 @@
 <script setup>
 import Logo from "~/assets/img/icon/logo.svg";
+import { storeToRefs } from "pinia";
 import { useHeaderStore } from "~/stores/the-header";
 import { useFooterStore } from "~/stores/the-footer";
+import { useProfileStore } from "~/stores/the-profile";
 
 const logo = ref(Logo);
 // pinia
 const { setIsUserModal } = useHeaderStore();
 const { setIsShowFooter } = useFooterStore();
+const { setIsShowProfile } = useProfileStore();
+const { isShowFooter } = storeToRefs(useFooterStore());
 </script>
 
 <template>
@@ -17,7 +21,10 @@ const { setIsShowFooter } = useFooterStore();
       <div class="flex flex-row items-center ml-auto space-x-1 cursor-pointer">
         <div class="flex flex-row items-center space-x-4">
           <transition name="header">
-            <div class="flex flex-row items-center space-x-3">
+            <div
+              class="flex flex-row items-center space-x-3"
+              @click.stop="setIsShowProfile(true)"
+            >
               <p class="text-xl font-bold lg:block hidden text-[#F1F2F6]">
                 Hi, Chad Gordon
               </p>
@@ -43,7 +50,10 @@ const { setIsShowFooter } = useFooterStore();
     <header
       class="md:hidden relative flex justify-between items-center flex-nowrap py-3 px-3 shadow-lg rounded-b-2xl bg-[#171D26]"
     >
-      <div class="w-[21px] h-[24px]" @click="setIsShowFooter()">
+      <div
+        class="w-[21px] h-[24px]"
+        @click="isShowFooter ? setIsShowFooter(false) : setIsShowFooter(true)"
+      >
         <ClientOnly>
           <fa
             class="w-full h-full"
@@ -99,7 +109,7 @@ const { setIsShowFooter } = useFooterStore();
             </g>
           </svg>
         </div>
-        <div>
+        <div @click.stop="setIsShowProfile(true)">
           <ClientOnly>
             <fa
               :class="
