@@ -129,16 +129,16 @@ const $v = useVuelidate(validations, changePassword);
         </template>
       </BaseInputText>
 
-      <div class="flex space-x-4">
+      <div class="flex space-x-4 py-10 md:py-0 md:pt-20">
         <BaseButton
           type="submit"
           text="Save Changes"
-          class="bg-[#8DB230] text-[#ffffff] py-2 w-[180px] px-4 lg:mt-0 mt-10 text-xl font-semibold rounded-md"
+          class="bg-[#8DB230] text-[#ffffff] py-2 whitespace-nowrap w-[152px] md:w-[180px] px-4 lg:mt-0 mt-10 text-base md:text-xl font-semibold rounded-md"
         />
         <BaseButton
           type="submit"
           text="Cancel"
-          class="bg-[#E8EBED] text-[#8DB230] py-2 w-[180px] px-4 lg:mt-0 mt-10 text-xl font-semibold rounded-md"
+          class="bg-[#E8EBED] text-[#8DB230] py-2 whitespace-nowrap w-[152px] md:w-[180px] px-4 lg:mt-0 mt-10 text-base md:text-xl font-semibold rounded-md"
         />
       </div>
     </div>

@@ -2,7 +2,7 @@
 <template>
   <img
     src="~/assets/img/icon/userImage.png"
-    alt="SharpArchive profile edit icon"
+    alt="SharpArchive user image icon"
   />
 </template>
 
