@@ -102,7 +102,7 @@ watch(
               </div>
             </div>
           </div>
-          <div class="w-[70%] px-14 pb-20 scroll overflow-y-scroll">
+          <div class="w-[70%] px-8 xl:px-14 pb-20 scroll overflow-y-scroll">
             <NuxtPage />
           </div>
         </div>
@@ -111,7 +111,7 @@ watch(
   </NuxtLayout>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .mainBody {
   @apply bg-white h-[90vh] overflow-hidden;
   box-shadow: 2px 2px 4px #2e2b2b29;
