@@ -86,7 +86,7 @@ const users = [
 </script>
 
 <template>
-  <div class="flex flex-col pt-[90px] p-[30px] w-full h-full">
+  <div class="flex flex-col p-[30px] w-full h-full">
     <div class="flex flex-row items-center justify-between w-full">
       <BaseInputText
         id="search"
