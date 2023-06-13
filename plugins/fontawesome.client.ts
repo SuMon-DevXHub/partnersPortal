@@ -20,6 +20,8 @@ import {
   faEyeSlash,
   faEye,
   faCheck,
+  faDollarSign,
+  faDownload,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -38,7 +40,9 @@ library.add(
   faLock,
   faEyeSlash,
   faEye,
-  faCheck
+  faCheck,
+  faDollarSign,
+  faDownload
 );
 
 export default defineNuxtPlugin((nuxtApp) => {
