@@ -1,10 +1,10 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="px-4">
+  <div class="xl:px-4">
     <h2 class="text-[#8DB230] text-lg pt-[30px]">Account Security</h2>
     <p class="text-[#656565] text-base">Update your account security</p>
-    <div class="px-8 mt-10">
+    <div class="px-4 xl:px-8 mt-10">
       <div class="text-xl font-bold">Two-Factor Authentication</div>
       <p class="mt-6">
         Your account is secured with two-factor authentication.

@@ -252,7 +252,7 @@ const submitForm = () => {
               />
             </div>
 
-            <div class="flex space-x-4">
+            <div class="flex space-x-4 pt-20">
               <BaseButton
                 type="submit"
                 text="Save Changes"

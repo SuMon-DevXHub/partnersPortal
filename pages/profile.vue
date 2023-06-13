@@ -29,7 +29,15 @@ const personalSettingsTab = ref([
   },
 ]);
 
+const showMenuBar = ref(false);
+const windowWidth = ref(0);
+
 onMounted(() => {
+  if (window.innerWidth >= 1024) {
+    showMenuBar.value = true;
+  }
+  windowWidth.value = window.innerWidth;
+
   selectCurrentTab(personalSettingsTab.value[0].id);
 });
 
@@ -53,12 +61,27 @@ watch(
   <NuxtLayout name="home">
     <div class="p-[30px] bg-[#F1F2F6]">
       <div class="flex flex-col mainBody">
-        <div class="headerShape">Personal Information</div>
-        <div class="flex w-full h-full">
+        <div class="headerShape">
+          <div class="flex w-full">
+            <div class="h-10 w-10 ml-4" @click="showMenuBar = !showMenuBar">
+              <BaseIconMenuIcon />
+            </div>
+            <p class="flex-grow">Personal Information</p>
+          </div>
+        </div>
+        <div class="flex w-full h-full relative">
+          <!-- v-if="(showMenuBar && windowWidth < 1024) || windowWidth >= 1024" -->
           <div
-            class="w-[30%] border-r-4 border-[#8DB230] leftWrapper px-[30px]"
+            class="border-r-4 border-[#8DB230] leftWrapper transition-all duration-300 ease-in-out"
+            :class="[
+              windowWidth < 1024 ? 'absolute bg-white h-full z-10' : '',
+              showMenuBar ? 'w-full md:w-1/2 lg:w-1/3' : 'w-0 border-r-0',
+            ]"
           >
-            <div class="text-center mt-[50px]">
+            <div
+              v-if="(showMenuBar && windowWidth < 1024) || windowWidth >= 1024"
+              class="text-center mt-[50px] px-[20px] md:px-2 lg:px-2 xl:px-4 dx:px-[30px]"
+            >
               <div
                 class="flex justify-center items-center w-[120px] h-[120px] border-2 border-[#8DB230] rounded-full mx-auto"
               >
@@ -83,7 +106,7 @@ watch(
                 >
                   <NuxtLink
                     :to="`/${personalSettings.slug}`"
-                    class="flex space-x-5 px-5 py-4"
+                    class="flex space-x-5 px-5 lg:px-2 xl:px-4 dx:px-5 py-4"
                   >
                     <component
                       :is="personalSettings.image"
@@ -102,7 +125,10 @@ watch(
               </div>
             </div>
           </div>
-          <div class="w-[70%] px-8 xl:px-14 pb-20 scroll overflow-y-scroll">
+          <div
+            class="px-8 lg:px-4 xl:px-14 pb-20 scroll overflow-y-scroll"
+            :class="windowWidth < 1024 ? 'w-full' : 'w-2/3'"
+          >
             <NuxtPage />
           </div>
         </div>
