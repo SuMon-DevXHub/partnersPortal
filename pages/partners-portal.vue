@@ -74,12 +74,22 @@ const payoutHistory = ref([
       <div class="card-header">
         <h3 class="card-title">Partner Portal</h3>
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-col h-[calc(100%-44px)] md:pt-0 pt-4">
         <div
-          class="flex justify-between flex-nowrap lg:p-[30px] p-[20px] lg:space-x-0 space-x-4 items-center"
+          class="md:hidden md:w-[60px] self-center md:h-[60px] w-[40px] h-[40px] bg-orange-dark bg-opacity-50 flex justify-center items-center rounded-[5px]"
+        >
+          <ClientOnly>
+            <fa
+              class="md:w-[17px] w-[10px] md:h-[39px] h-[29px] text-[#F2F2F2]"
+              :icon="['fas', 'dollar-sign']"
+            />
+          </ClientOnly>
+        </div>
+        <div
+          class="flex whitespace-nowrap justify-between flex-nowrap lg:p-[30px] p-[20px] lg:space-x-0 md:space-x-4 space-x-0 items-center"
         >
           <div
-            class="md:w-[60px] md:h-[60px] w-[40px] h-[40px] bg-orange-dark bg-opacity-50 flex justify-center items-center rounded-[5px]"
+            class="hidden md:w-[60px] md:h-[60px] w-[40px] h-[40px] bg-orange-dark bg-opacity-50 md:flex justify-center items-center rounded-[5px]"
           >
             <ClientOnly>
               <fa
@@ -88,53 +98,43 @@ const payoutHistory = ref([
               />
             </ClientOnly>
           </div>
-          <div class="text-orange-dark text-center">
-            <p class="xl:text-xl md:text-lg text-base">
+          <div class="text-orange-dark md:text-center text-left">
+            <p class="xl:text-xl md:text-base text-base">
               {{ portalHistory.totalIncome }}
             </p>
-            <h2 class="xl:text-2xl md:text-lg text-xs font-medium">
+            <h2 class="xl:text-2xl md:text-base text-xs font-medium">
               Total Income
             </h2>
           </div>
           <div class="text-orange-dark md:text-center text-right">
-            <p class="xl:text-xl md:text-lg text-base">
+            <p class="xl:text-xl md:text-base text-base">
               {{ portalHistory.monthlyNetProfit }}
             </p>
-            <h2 class="xl:text-2xl md:text-lg text-xs font-medium">
+            <h2 class="xl:text-2xl md:text-base text-xs font-medium">
               Monthly Net Profit
             </h2>
           </div>
           <div class="text-orange-dark text-center md:block hidden">
-            <p class="xl:text-xl md:text-lg text-base">
+            <p class="xl:text-xl md:text-base text-base">
               {{ portalHistory.totalUsers }}
             </p>
-            <h2 class="xl:text-2xl md:text-lg text-base font-medium">
+            <h2 class="xl:text-2xl md:text-base text-base font-medium">
               Total Users
             </h2>
           </div>
           <div class="text-orange-dark text-right md:block hidden">
-            <p class="xl:text-xl md:text-lg text-base">
+            <p class="xl:text-xl md:text-base text-base">
               {{ portalHistory.newUsers }}
             </p>
-            <h2 class="xl:text-2xl md:text-lg text-base font-medium">
+            <h2 class="xl:text-2xl md:text-base text-base font-medium">
               New Users
             </h2>
           </div>
         </div>
         <div
-          class="flex justify-between flex-nowrap lg:p-[30px] p-[20px] lg:space-x-0 space-x-4 md:hidden items-center"
+          class="flex justify-between flex-nowrap lg:p-[30px] p-[20px] pt-[10px] pb-[10px] lg:space-x-0 space-x-4 md:hidden items-center"
         >
-          <div
-            class="md:w-[60px] md:h-[60px] w-[40px] h-[40px] bg-orange-dark bg-opacity-50 flex justify-center items-center rounded-[5px]"
-          >
-            <ClientOnly>
-              <fa
-                class="md:w-[17px] w-[10px] md:h-[39px] h-[29px] text-[#F2F2F2]"
-                :icon="['fas', 'dollar-sign']"
-              />
-            </ClientOnly>
-          </div>
-          <div class="text-orange-dark text-center">
+          <div class="text-orange-dark md:text-center text-left">
             <p class="xl:text-xl md:text-lg text-base">
               {{ portalHistory.totalUsers }}
             </p>
@@ -151,69 +151,73 @@ const payoutHistory = ref([
             </h2>
           </div>
         </div>
-        <div class="w-full h-10 mt-10">
-          <h3
-            class="w-full h-full text-center text-orange-dark text-lg font-bold"
-          >
-            Payout History
-          </h3>
-        </div>
-        <div class="card-body scroll lg:mx-[30px] mx-[20px] flex-grow">
-          <table
-            class="min-w-full table-wrapper rounded-t-[20px] overflow-hidden"
-          >
-            <thead>
-              <tr
-                class="bg-[#E4801D] bg-opacity-[0.16] border-b sticky top-0 left-0 z-1"
-              >
-                <th scope="col" class="table-th">
-                  <strong>Date</strong>
-                </th>
-                <th scope="col" class="table-th">
-                  <strong>Amount</strong>
-                </th>
-                <th scope="col" class="table-th">
-                  <strong>Payment Method</strong>
-                </th>
-                <th scope="col" class="table-th">
-                  <strong>Status</strong>
-                </th>
-                <th scope="col" class="table-th">
-                  <strong>Action</strong>
-                </th>
-              </tr>
-            </thead>
+        <div
+          class="md:pt-10 pt-5 pb-4 md:h-[calc(100%-99px)] h-[calc(100%-165px)]"
+        >
+          <div class="w-full h-10">
+            <h3
+              class="w-full h-full text-center text-orange-dark text-lg font-bold"
+            >
+              Payout History
+            </h3>
+          </div>
+          <div class="card-body scroll lg:mx-[30px] mx-[20px] flex-grow">
+            <table
+              class="min-w-full table-wrapper rounded-t-[20px] overflow-hidden"
+            >
+              <thead>
+                <tr
+                  class="bg-[#E4801D] bg-opacity-[0.16] border-b sticky top-0 left-0 z-1"
+                >
+                  <th scope="col" class="table-th">
+                    <strong>Date</strong>
+                  </th>
+                  <th scope="col" class="table-th">
+                    <strong>Amount</strong>
+                  </th>
+                  <th scope="col" class="table-th">
+                    <strong>Payment Method</strong>
+                  </th>
+                  <th scope="col" class="table-th">
+                    <strong>Status</strong>
+                  </th>
+                  <th scope="col" class="table-th">
+                    <strong>Action</strong>
+                  </th>
+                </tr>
+              </thead>
 
-            <tbody>
-              <tr
-                v-for="(payout, index) in payoutHistory"
-                :key="'user' + index"
-                :class="index % 2 === 0 ? 'bg-white' : 'bg-[#E8E8E8]'"
-              >
-                <td class="table-td">
-                  <span class="table-span">{{ payout.date }}</span>
-                </td>
-                <td class="table-td">
-                  <span class="table-span">{{ payout.amount }}</span>
-                </td>
-                <td class="table-td">
-                  <span class="table-span">{{ payout.paymentethod }}</span>
-                </td>
-                <td class="table-td">
-                  <span class="table-span">{{ payout.status }}</span>
-                </td>
-                <td class="table-td">
-                  <ClientOnly>
-                    <span class="table-span"
-                      ><fa
-                        class="text-[#00CC44]"
-                        :icon="['fas', 'fa-download']"
-                    /></span>
-                  </ClientOnly>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr
+                  v-for="(payout, index) in payoutHistory"
+                  :key="'user' + index"
+                  :class="index % 2 === 0 ? 'bg-white' : 'bg-[#E8E8E8]'"
+                >
+                  <td class="table-td">
+                    <span class="table-span">{{ payout.date }}</span>
+                  </td>
+                  <td class="table-td">
+                    <span class="table-span">{{ payout.amount }}</span>
+                  </td>
+                  <td class="table-td">
+                    <span class="table-span">{{ payout.paymentethod }}</span>
+                  </td>
+                  <td class="table-td">
+                    <span class="table-span">{{ payout.status }}</span>
+                  </td>
+                  <td class="table-td">
+                    <ClientOnly>
+                      <span class="table-span"
+                        ><fa
+                          class="text-[#00CC44]"
+                          :icon="['fas', 'fa-download']"
+                      /></span>
+                    </ClientOnly>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

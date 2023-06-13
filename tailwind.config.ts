@@ -31,6 +31,9 @@ export default <Partial<Config>>{
         primary: "#FDB21D",
         "light-white": "#F0F0F0",
         "black-1": "#374151",
+        gray: {
+          1100: "#C2C2C2",
+        },
         ash: {
           default: "#393E46",
           1000: "#F1F2F6",
@@ -42,7 +45,7 @@ export default <Partial<Config>>{
           1100: "#8DB230",
         },
         purple: {
-          midlight: '#7D80BD',
+          midlight: "#7D80BD",
         },
       },
       spacing: {

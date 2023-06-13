@@ -2,6 +2,7 @@
 import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
 
+const router = useRouter();
 // data or state
 const user = ref({
   email: "",
@@ -20,6 +21,9 @@ const validations = computed(() => {
   };
 });
 const $v = useVuelidate(validations, user);
+const logIn = () => {
+  router.replace("/partners-portal");
+};
 </script>
 
 <template>
@@ -28,7 +32,7 @@ const $v = useVuelidate(validations, user);
       class="h-screen font-roboto top-0 right-0 fixed md:px-7 px-4 login overflow-hidden md:rounded-l-2xl md:shadow-none drop-shadow-2xl z-[4]"
       @click.stop=""
     >
-      <form novalidate @submit.prevent="">
+      <form novalidate @submit.prevent="logIn">
         <div>
           <div class="flex flex-row justify-between items-center pt-4">
             <div>
@@ -125,6 +129,7 @@ const $v = useVuelidate(validations, user);
           <BaseButton
             class="w-44 h-10 text-white bg-[#E4801D] rounded-full border-none outline-none font-bold px-4"
             text="Login"
+            @click.stop="logIn"
           />
         </div>
       </form>

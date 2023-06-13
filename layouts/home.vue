@@ -2,9 +2,11 @@
 import { storeToRefs } from "pinia";
 import { useSidebarStore } from "~/stores/the-sidebar";
 import { useFooterStore } from "~/stores/the-footer";
+import { useProfileStore } from "~/stores/the-profile";
 // pinia
 const { isSqueeze } = storeToRefs(useSidebarStore());
 const { setIsShowFooter } = useFooterStore();
+const { setIsShowProfile } = useProfileStore();
 </script>
 
 <template>
@@ -19,11 +21,12 @@ const { setIsShowFooter } = useFooterStore();
             ? 'transition-all duration-500 ease-in-out delay-500 md:pl-[200px]'
             : 'transition-all duration-500 ease-in-out delay-100 md:pl-26'
         "
-        @click.stop="setIsShowFooter()"
+        @click.stop="setIsShowFooter(false), setIsShowProfile(false)"
       >
         <slot />
       </div>
     </div>
     <TheFooter />
+    <TheProfile />
   </div>
 </template>
