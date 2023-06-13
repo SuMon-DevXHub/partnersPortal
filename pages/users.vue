@@ -86,6 +86,12 @@ const users = [
 
 const pastMonths = ref("Past Month");
 const showVCalender = ref(true);
+// const vCalenderShow = () => {
+//   showVCalender.value = true;
+// };
+// const vCalenderHide = () => {
+//   showVCalender.value = false;
+// };
 </script>
 
 <template>
@@ -124,15 +130,30 @@ const showVCalender = ref(true);
           opacity="0.5"
           :options="methods"
         />
-        <!-- <div
-          class="w-full text-lg font-bold relative group cursor-pointer"
+        <div
+          class="w-[200px] text-lg font-bold relative group cursor-pointer"
           @click="vCalenderShow()"
           @mouseleave.stop="vCalenderHide()"
         >
-          <select-input
+          <BaseInputSelect
             id="pastMonth3"
             v-model="pastMonths"
-            :show-v-calender="showVCalender"
+            class="md:text-lg text-base not-clickable selectSearch"
+            class-style-name="searchPageScrollStyle searchPageScrollWidth search-select-input"
+            text-input="textInput w-[200px] md:py-1.5 py-2"
+            :place-holder="pastMonths"
+            color="#ffffff"
+            toggle-button="toggleButton"
+            background="#7D80BD"
+            caret-bg="#7D80BD"
+            caret-color="#ffffff"
+            :place-holder-disabled="true"
+            opacity="0.5"
+          />
+          <!-- <BaseInputSelect
+            id="pastMonth3"
+            v-model="pastMonths"
+            :toggle-select="showVCalender"
             class="not-clickable selectSearch"
             class-style-name="searchPageScrollStyle searchPageScrollWidth search-select-input"
             :place-holder="pastMonths"
@@ -141,10 +162,9 @@ const showVCalender = ref(true);
             background="#7D80BD"
             caret-bg="#7D80BD"
             scroll-color="#5b5fcc"
-          >
-          </select-input>
+          /> -->
           <div
-            class="w-100 shadow-xl absolute top-13.3 lg:right-0 md:-right-0 z-999999 block cursor-pointer bg-white rounded-3xl border-top"
+            class="w-[400px] shadow-xl absolute top-13.3 lg:right-0 md:-right-0 z-50 block cursor-pointer bg-white rounded-3xl border-top"
           >
             <v-calender-with-preset
               :show-v-calender="showVCalender"
@@ -154,7 +174,7 @@ const showVCalender = ref(true);
               @hide-v-calender="vCalenderHide()"
             />
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
 

@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="showVCalender"
-    class="w-full rounded-3xl font-normal text-black h-full relative calender-bubble z-50"
+    class="w-full rounded-3xl font-normal text-black h-full relative calender-bubble"
     :style="{
       '--borderColor': borderColor,
       '--scrollColor': scrollColor,
@@ -355,54 +355,54 @@ export default {
   watch: {
     showVCalender(data) {
       if (data) {
-          // this.getOldestJoiningDateTime();
+        // this.getOldestJoiningDateTime();
         console.log("showVCalender", data);
       }
     },
   },
-//   created() {
-//     this.$nuxt.$on("dateRange", (data) => {
-//       this.dateRange.start = data.startDate;
-//       this.dateRange.end = data.endDate;
-//     });
-//     this.$nuxt.$on("clearDatePicker", () => {
-//       this.dateRange.start = format(new Date(), this.currentDateFormat);
-//       this.dateRange.end = format(new Date(), this.currentDateFormat);
-//       this.currentTimer = null;
-//       this.currentTimerLabel = null;
-//       this.currentTimerText = null;
-//       this.timerCollections = [
-//         {
-//           text: "All",
-//           value: 0,
-//         },
-//         {
-//           text: "Last",
-//           value: 1,
-//         },
-//         {
-//           text: "Year to Date",
-//           value: 2,
-//         },
-//         {
-//           text: "Months",
-//           value: 3,
-//         },
-//         {
-//           text: "Quarter",
-//           value: 4,
-//         },
-//         {
-//           text: "Years",
-//           value: 5,
-//         },
-//       ];
-//     });
-//     this.$nuxt.$on("selectAllDateTime", () => {
-//       this.currentTimer = 0;
-//       this.getAllDateTime();
-//     });
-//   },
+  //   created() {
+  //     this.$nuxt.$on("dateRange", (data) => {
+  //       this.dateRange.start = data.startDate;
+  //       this.dateRange.end = data.endDate;
+  //     });
+  //     this.$nuxt.$on("clearDatePicker", () => {
+  //       this.dateRange.start = format(new Date(), this.currentDateFormat);
+  //       this.dateRange.end = format(new Date(), this.currentDateFormat);
+  //       this.currentTimer = null;
+  //       this.currentTimerLabel = null;
+  //       this.currentTimerText = null;
+  //       this.timerCollections = [
+  //         {
+  //           text: "All",
+  //           value: 0,
+  //         },
+  //         {
+  //           text: "Last",
+  //           value: 1,
+  //         },
+  //         {
+  //           text: "Year to Date",
+  //           value: 2,
+  //         },
+  //         {
+  //           text: "Months",
+  //           value: 3,
+  //         },
+  //         {
+  //           text: "Quarter",
+  //           value: 4,
+  //         },
+  //         {
+  //           text: "Years",
+  //           value: 5,
+  //         },
+  //       ];
+  //     });
+  //     this.$nuxt.$on("selectAllDateTime", () => {
+  //       this.currentTimer = 0;
+  //       this.getAllDateTime();
+  //     });
+  //   },
   mounted() {
     this.modelConfig.start.mask = this.upperCaseDate;
     this.modelConfig.end.mask = this.upperCaseDate;
