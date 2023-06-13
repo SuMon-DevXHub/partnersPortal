@@ -101,7 +101,7 @@ const users = [
       >
         <template v-slot:icon-before>
           <ClientOnly>
-            <BaseIconSearch class="text-[#7D80BD] pl-4 " />
+            <BaseIconSearch class="text-[#7D80BD] pl-4" />
           </ClientOnly>
         </template>
       </BaseInputText>
@@ -179,7 +179,7 @@ const users = [
             >
               <td class="table-td">
                 <div class="flex items-center space-x-3">
-                  <ClientOnly><BaseIconUserIcon /></ClientOnly>
+                  <BaseIconUser class="w-6 h-6 rounded-full" />
                   <span class="table-span">{{ user.name }}</span>
                 </div>
               </td>
