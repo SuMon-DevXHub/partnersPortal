@@ -5,6 +5,7 @@ config.autoAddCss = false;
 
 /* import specific icons */
 import {
+  faMagnifyingGlass,
   faAngleRight,
   faCalendarDays,
   faChevronRight,
@@ -27,6 +28,7 @@ import {
 
 /* add icons to the library */
 library.add(
+  faMagnifyingGlass,
   faUserSecret,
   faAngleRight,
   faCalendarDays,
