@@ -8,16 +8,14 @@ const { isSqueeze } = storeToRefs(useSidebarStore());
 <template>
   <div class="w-full h-screen overflow-hidden bg-ash-1000 relative">
     <TheHeader />
-    <div class="flex w-full h-full">
-      <div class="w-26 h-full">
-        <LazyTheSidebar />
-      </div>
+    <div class="flex w-full md:h-[calc(100%-62px)] h-full">
+      <LazyTheSidebar />
       <div
-        class="w-auto h-full flex-grow"
+        class="w-full h-full"
         :class="
           isSqueeze
-            ? 'transition-all duration-500 ease-in-out delay-500 ml-26'
-            : 'transition-all duration-500 ease-in-out delay-100 ml-0'
+            ? 'transition-all duration-500 ease-in-out delay-500 md:pl-[200px]'
+            : 'transition-all duration-500 ease-in-out delay-100 md:pl-26'
         "
       >
         <slot />
