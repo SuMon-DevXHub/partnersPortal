@@ -38,12 +38,22 @@ const { errorMessages } = useInputValidations();
 <template>
   <div
     class="text-input"
-    :style="{ '--color': color, '--background': background, '--placeHolderColor': placeHolderColor }"
+    :style="{
+      '--color': color,
+      '--background': background,
+      '--placeHolderColor': placeHolderColor,
+    }"
   >
     <div class="flex space-x-4 items-center" :class="[inputWrapper]">
       <slot name="icon-before"></slot>
       <div class="w-full input_inner_wrapper">
-        <label v-if="label" class="mb-1.5" :for="id">{{ label }}</label>
+        <label
+          v-if="label"
+          class="mb-1.5"
+          :for="id"
+          :style="{ color: color }"
+          >{{ label }}</label
+        >
         <input
           :id="id"
           :class="[placeHolderClass, textInput]"

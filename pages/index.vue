@@ -1,5 +1,5 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: ["redirect-to-login"]
-})
+  middleware: ["redirect-to-login"],
+});
 </script>
