@@ -62,6 +62,7 @@
       <NuxtLink
         to="/partners-portal"
         class="sidemenu__link mb-2.5"
+        :class="$route.name === 'partners-portal' ? 'activeRoute' : ''"
         data-theme-bg="bg-gray-1000"
         data-theme-text="text-orange-dark"
         data-theme-circle="bg-orange-dark"
@@ -107,6 +108,7 @@
       <NuxtLink
         to="/profile/information"
         class="sidemenu__link mb-2.5"
+        :class="$route.matched[0].path === '/profile' ? 'activeRoute' : ''"
         data-theme-bg="bg-gray-1000"
         data-theme-text="text-green-1100"
         data-theme-circle="bg-green-1100"
@@ -142,6 +144,7 @@
       <NuxtLink
         to="/users"
         class="sidemenu__link mb-2.5"
+        :class="$route.name === 'users' ? 'activeRoute' : ''"
         data-theme-bg="bg-gray-1000"
         data-theme-text="text-purple-midlight"
         data-theme-circle="bg-purple-midlight"
@@ -250,7 +253,8 @@ export default {
     },
     animate() {
       // const activeLink = event.target.closest(".sidemenu__link");
-      const activeLink = document.querySelector(".router-link-active");
+      console.log(this.$route.matched[0].path, "router name");
+      const activeLink = document.querySelector(".activeRoute");
       const oldPreviousLink = document.querySelector(".rounded-br-2xl");
       if (oldPreviousLink) {
         oldPreviousLink.classList.remove("rounded-br-2xl");
