@@ -389,6 +389,7 @@ const showVCalender = ref(false);
 .web-card {
   @apply bg-white rounded-3xl overflow-hidden;
   height: calc(100% - 130px);
+  box-shadow: 2px 2px 4px #2E2B2B29;
 }
 .card-header {
   @apply bg-[#7D80BD] text-center py-2;

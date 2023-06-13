@@ -9,7 +9,6 @@ export const useHeaderStore = defineStore("header", () => {
   // actions
   const setIsUserModal = (payload: boolean) => {
       userModalRef.value = payload
-      console.log(userModalRef.value)
   }
   return {
     isUserModal,

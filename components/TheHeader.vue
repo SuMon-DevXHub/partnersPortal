@@ -1,10 +1,9 @@
 <script setup>
-import { useHeaderStore } from "~/stores/the-header";
 import Logo from "~/assets/img/icon/logo.svg";
+import { useHeaderStore } from "~/stores/the-header";
 import { useFooterStore } from "~/stores/the-footer";
 
 const logo = ref(Logo);
-
 // pinia
 const { setIsUserModal } = useHeaderStore();
 const { setIsShowFooter } = useFooterStore();
