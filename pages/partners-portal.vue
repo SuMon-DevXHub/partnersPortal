@@ -3,6 +3,19 @@ definePageMeta({
   layout: "home",
 });
 
+const $config = useRuntimeConfig();
+const route = useRoute();
+useHead(() => ({
+  title: "Partners Portal",
+  link: [
+    {
+      hid: "canonical",
+      rel: "canonical",
+      href: `${$config.public.siteUrl}/${route.name}`,
+    },
+  ],
+}));
+
 const portalHistory = ref({
   totalIncome: "$3511.98",
   monthlyNetProfit: "$129.98",
@@ -56,7 +69,7 @@ const payoutHistory = ref([
 </script>
 
 <template>
-  <div class="w-full h-full p-[30px]">
+  <div class="w-full h-full md:p-[30px] p-4">
     <div class="web-card w-full h-full">
       <div class="card-header">
         <h3 class="card-title">Partner Portal</h3>
@@ -68,10 +81,12 @@ const payoutHistory = ref([
           <div
             class="md:w-[60px] md:h-[60px] w-[40px] h-[40px] bg-orange-dark bg-opacity-50 flex justify-center items-center rounded-[5px]"
           >
-            <fa
-              class="md:w-[17px] w-[10px] md:h-[39px] h-[29px] text-[#F2F2F2]"
-              :icon="['fas', 'dollar-sign']"
-            />
+            <ClientOnly>
+              <fa
+                class="md:w-[17px] w-[10px] md:h-[39px] h-[29px] text-[#F2F2F2]"
+                :icon="['fas', 'dollar-sign']"
+              />
+            </ClientOnly>
           </div>
           <div class="text-orange-dark text-center">
             <p class="xl:text-xl md:text-lg text-base">
@@ -112,10 +127,12 @@ const payoutHistory = ref([
           <div
             class="md:w-[60px] md:h-[60px] w-[40px] h-[40px] bg-orange-dark bg-opacity-50 flex justify-center items-center rounded-[5px]"
           >
-            <fa
-              class="md:w-[17px] w-[10px] md:h-[39px] h-[29px] text-[#F2F2F2]"
-              :icon="['fas', 'dollar-sign']"
-            />
+            <ClientOnly>
+              <fa
+                class="md:w-[17px] w-[10px] md:h-[39px] h-[29px] text-[#F2F2F2]"
+                :icon="['fas', 'dollar-sign']"
+              />
+            </ClientOnly>
           </div>
           <div class="text-orange-dark text-center">
             <p class="xl:text-xl md:text-lg text-base">
@@ -141,7 +158,7 @@ const payoutHistory = ref([
             Payout History
           </h3>
         </div>
-        <div class="card-body scroll mx-[30px] flex-grow">
+        <div class="card-body scroll lg:mx-[30px] mx-[20px] flex-grow">
           <table
             class="min-w-full table-wrapper rounded-t-[20px] overflow-hidden"
           >
@@ -186,9 +203,13 @@ const payoutHistory = ref([
                   <span class="table-span">{{ payout.status }}</span>
                 </td>
                 <td class="table-td">
-                  <span class="table-span"
-                    ><fa class="text-[#00CC44]" :icon="['fas', 'fa-download']"
-                  /></span>
+                  <ClientOnly>
+                    <span class="table-span"
+                      ><fa
+                        class="text-[#00CC44]"
+                        :icon="['fas', 'fa-download']"
+                    /></span>
+                  </ClientOnly>
                 </td>
               </tr>
             </tbody>
@@ -220,7 +241,7 @@ const payoutHistory = ref([
 .table-th {
   @apply md:px-6 px-6 md:py-2 py-2 text-left tracking-wider xl:text-lg md:text-base text-sm md:font-bold whitespace-nowrap text-[#434343];
 }
-.table-th:nth-child(n-1){
+.table-th:nth-child(n-1) {
   text-align: center;
 }
 .tooltip {
