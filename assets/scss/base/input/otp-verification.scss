@@ -1,0 +1,45 @@
+.card-body {
+  max-height: 644px;
+  @apply w-full flex-grow flex flex-col justify-center items-center overflow-y-auto overflow-x-hidden scroll;
+  .row {
+    @apply flex;
+    .col {
+      @apply w-full p-2;
+    }
+  }
+}
+.otp {
+  @apply relative flex justify-center;
+  fieldset {
+    @apply border-0 p-0 m-0 flex items-center text-white;
+    legend {
+      @apply md:mb-4 mb-2 text-center w-full;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+.scroll {
+  scrollbar-color: #ff8308 #ececec; /* Firefox 64 */
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #ff8308;
+  }
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #ff8308;
+  }
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@media (max-width: 395px) {
+  .input-space {
+    @apply space-x-3;
+  }
+}

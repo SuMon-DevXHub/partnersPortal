@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="showVCalender"
-    class="w-full rounded-3xl font-normal text-black h-full relative calender-bubble"
+    class="w-full rounded-3xl font-normal text-black h-full relative calender-bubble mt-4"
     :style="{
       '--borderColor': borderColor,
       '--scrollColor': scrollColor,
@@ -68,7 +68,9 @@
         </div>
       </div>
     </div>
-    <div class="w-full p-4 body bg-white pt-5 rounded-b-2xl">
+    <div
+      class="w-full p-4 body bg-white pt-5 rounded-b-2xl shadow-[0px_4px_5px_#2228317F]"
+    >
       <div class="grid grid-cols-12 md:gap-1 gap-2 w-full">
         <div
           class="flex flex-col items-start md:col-span-5 col-span-12 space-y-1 w-full"
@@ -186,11 +188,11 @@ export default {
     },
     sidebarHoverClass: {
       type: String,
-      default: "hover:bg-purple-1000 hover:text-white",
+      default: "hover:bg-[#7D80BD] hover:text-white",
     },
     sidebarActiveColor: {
       type: String,
-      default: "bg-purple-1000 text-white",
+      default: "bg-[#7D80BD] text-white",
     },
 
     datePickerColor: {
@@ -199,15 +201,15 @@ export default {
     },
     contentBodyColor: {
       type: String,
-      default: "bg-purple-1000",
+      default: "bg-[#7D80BD]",
     },
     contentBodyHoverColor: {
       type: String,
-      default: "hover:bg-white hover:text-purple-1000",
+      default: "hover:bg-white hover:text-[#7D80BD]",
     },
     contentBodyActiveColor: {
       type: String,
-      default: "bg-white text-purple-1000",
+      default: "bg-white text-[#7D80BD]",
     },
     borderColor: {
       type: String,
@@ -356,7 +358,6 @@ export default {
     showVCalender(data) {
       if (data) {
         // this.getOldestJoiningDateTime();
-        console.log("showVCalender", data);
       }
     },
   },
@@ -555,11 +556,15 @@ export default {
       );
 
       const end = lastDayOfQuarter(
-        subQuarters(
+        subQuarters(subDays(new Date(), needSubDate), index)
+      );
+      /*
+      // for end old subQuarters code was:
+      subQuarters(
           subDays(addMonths(new Date(), actualAdd), needSubDate),
           index
         )
-      );
+      */
       this.setDateRange(start, end);
     },
     getPastMonthsDateTime(timeString) {

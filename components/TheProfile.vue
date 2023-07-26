@@ -2,14 +2,14 @@
 import { storeToRefs } from "pinia";
 import { useProfileStore } from "~/stores/the-profile";
 import { usePageColorStore } from "~/stores/pagecolor";
-// import BaseIconUserImageIcon from "~/components/base/icon/UserImageIcon.vue";
-// import { BaseIconUserImageIcon } from "../.nuxt/components";
-const { showProfile } = storeToRefs(useProfileStore());
+
+const { showProfile, userInfo } = storeToRefs(useProfileStore());
 const { getColor } = storeToRefs(usePageColorStore());
 const { setIsShowProfile } = useProfileStore();
 const router = useRouter();
+const { logout } = useAuth();
 
-const userInfo = ref({
+const profileInfo = ref({
   // image: BaseIconUserImageIcon,
   name: "Jhon Smith",
   email: "joejhonson@gmail.com",
@@ -20,8 +20,15 @@ const userInfo = ref({
 });
 
 const logoutProcess = ref(false);
-const logout = () => {
-  router.replace("/");
+const profileLogout = async () => {
+  logoutProcess.value = true;
+  await logout().then((res) => {
+    if (res) {
+      router.replace("/");
+      logoutProcess.value = false;
+      setIsShowProfile(false);
+    }
+  });
 };
 </script>
 
@@ -40,7 +47,7 @@ const logout = () => {
                   :style="{ color: getColor.backgroundColor }"
                   class="xl:text-2xl md:text-xl md:font-medium text-2xl"
                 >
-                  Partners Profile
+                  Partner Profile
                 </h2>
                 <div
                   class="w-8 h-8 flex items-center justify-end cursor-pointer"
@@ -62,12 +69,22 @@ const logout = () => {
                   }"
                   class="w-24 h-24 rounded-full border-4 flex justify-center items-center"
                 >
-                  <BaseIconUserImageIcon class="w-full h-full rounded-full" />
+                  <BaseIconUserImageIcon
+                    v-if="userInfo && userInfo.avatar"
+                    class="w-full h-full rounded-full"
+                  />
+                  <BaseIconDefaultProfileIcon
+                    v-else
+                    class="w-full h-full rounded-full"
+                  />
                 </div>
                 <h2
                   class="text-gray-1100 xl:text-2xl md:text-xl font-bold text-2xl md:pt-6 pt-3 text-center cursor-pointer"
                 >
-                  <span>{{ userInfo.name }}</span>
+                  <span
+                    >{{ userInfo ? userInfo.firstName : "" }}
+                    {{ userInfo ? userInfo.lastName : "" }}</span
+                  >
                 </h2>
               </div>
               <div class="md:flex hidden flex-col mt-6 cursor-pointer">
@@ -80,10 +97,10 @@ const logout = () => {
                   <p
                     class="text-gray-1100 xl:text-xl md:text-lg text-xl opacity-50"
                   >
-                    {{ userInfo.email }}
+                    {{ userInfo ? userInfo.email : "" }}
                   </p>
                 </div>
-                <div v-if="userInfo.address" class="mt-6">
+                <div class="mt-6">
                   <h4
                     class="text-gray-1100 xl:text-xl md:text-lg font-bold text-2xl"
                   >
@@ -92,13 +109,13 @@ const logout = () => {
                   <p
                     class="text-gray-1100 xl:text-xl md:text-lg text-xl opacity-50 break-all"
                   >
-                    {{ userInfo.address }}
+                    {{ userInfo ? userInfo.address : "" }}
                   </p>
-                  <p
+                  <!-- <p
                     class="text-gray-1100 xl:text-xl md:text-lg text-xl opacity-50 break-all"
                   >
-                    {{ userInfo.fullAddress }}
-                  </p>
+                    {{ profileInfo.fullAddress }}
+                  </p> -->
                 </div>
                 <div class="mt-6">
                   <h4
@@ -109,7 +126,7 @@ const logout = () => {
                   <p
                     class="text-gray-1100 xl:text-xl md:text-lg text-xl opacity-50"
                   >
-                    {{ userInfo.phone }}
+                    {{ userInfo ? userInfo.phone : "" }}
                   </p>
                 </div>
                 <div class="mt-6">
@@ -121,7 +138,7 @@ const logout = () => {
                   <p
                     class="text-gray-1100 xl:text-xl md:text-lg text-xl opacity-50"
                   >
-                    {{ userInfo.partnerCode }}
+                    {{ profileInfo.partnerCode }}
                   </p>
                 </div>
               </div>
@@ -139,14 +156,11 @@ const logout = () => {
                     <p
                       class="text-gray-1100 text-lg h-7 opacity-50 inline-block space-y-3"
                     >
-                      {{ userInfo.email }}
+                      {{ userInfo ? userInfo.email : "" }}
                     </p>
                   </div>
                 </div>
-                <div
-                  v-if="userInfo.address"
-                  class="grid grid-cols-12 gap-6 w-full mt-2"
-                >
+                <div class="grid grid-cols-12 gap-6 w-full mt-2">
                   <div class="col-span-4">
                     <label
                       class="text-gray-1100 text-lg font-bold inline-block space-y-3"
@@ -157,13 +171,13 @@ const logout = () => {
                     <p
                       class="text-gray-1100 text-lg h-7 opacity-50 inline-block break-all space-y-3"
                     >
-                      {{ userInfo.address }}
+                      {{ userInfo ? userInfo.address : "" }}
                     </p>
-                    <p
+                    <!-- <p
                       class="text-gray-1100 text-lg h-7 opacity-50 inline-block break-all space-y-3"
                     >
-                      {{ userInfo.fullAddress }}
-                    </p>
+                      {{ profileInfo.fullAddress }}
+                    </p> -->
                   </div>
                 </div>
                 <div class="grid grid-cols-12 gap-6 w-full mt-2">
@@ -177,7 +191,7 @@ const logout = () => {
                     <p
                       class="text-gray-1100 text-lg h-7 opacity-50 inline-block space-y-3"
                     >
-                      {{ userInfo.phone }}
+                      {{ userInfo ? userInfo.phone : "" }}
                     </p>
                   </div>
                 </div>
@@ -192,7 +206,7 @@ const logout = () => {
                     <p
                       class="text-gray-1100 text-lg h-7 opacity-50 inline-block space-y-3"
                     >
-                      {{ userInfo.partnerCode }}
+                      {{ profileInfo.partnerCode }}
                     </p>
                   </div>
                 </div>
@@ -210,7 +224,7 @@ const logout = () => {
                   type="submit"
                   class="w-44 py-2 text-white rounded-full border-none outline-none font-bold text-base setup"
                   :disabled="logoutProcess"
-                  @click="logout()"
+                  @click="profileLogout()"
                 >
                   <div
                     class="rounded-full relative flex items-center justify-around"

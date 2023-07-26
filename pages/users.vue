@@ -1,11 +1,14 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useHeaderStore } from "~/stores/the-header";
+import { PARTNER_USERS } from "~/constants/urls";
 
 definePageMeta({
   layout: "home",
+  middleware: ["auth", "payment"],
 });
 
+const { fetch } = useFetched();
 const { setIsUserModal } = useHeaderStore();
 const { isUserModal } = storeToRefs(useHeaderStore());
 
@@ -17,99 +20,57 @@ const methods = [
   { id: 3, text: "Inactive", value: "3" },
 ];
 const date = ref("Sign Up Date");
-const dates = [
-  { id: 1, text: "13 July 2023", value: "1" },
-  { id: 2, text: "20 July 2023", value: "2" },
-  { id: 3, text: "23 July 2023", value: "3" },
-  { id: 4, text: "30 July 2023", value: "4" },
-];
 
-const users = [
-  {
-    id: 1,
-    name: "John Doe",
-    email: "a@gmail.com",
-    phone: "1234567890",
-    businessName: "ABC",
-    signUpDate: "12/12/2021",
-    feeds: "12",
-    lastMonthSpend: "$100",
-  },
-  {
-    id: 2,
-    name: "John Doe",
-    email: "a@gmail.com",
-    phone: "1234567890",
-    businessName: "ABC",
-    signUpDate: "12/12/2021",
-    feeds: "12",
-    lastMonthSpend: "$100",
-  },
-  {
-    id: 3,
-    name: "John Doe",
-    email: "a@gmail.com",
-    phone: "1234567890",
-    businessName: "ABC",
-    signUpDate: "12/12/2021",
-    feeds: "12",
-    lastMonthSpend: "$100",
-  },
-  {
-    id: 4,
-    name: "John Doe",
-    email: "a@gmail.com",
-    phone: "1234567890",
-    businessName: "ABC",
-    signUpDate: "12/12/2021",
-    feeds: "12",
-    lastMonthSpend: "$100",
-  },
-  {
-    id: 5,
-    name: "John Doe",
-    email: "a@gmail.com",
-    phone: "1234567890",
-    businessName: "ABC",
-    signUpDate: "12/12/2021",
-    feeds: "12",
-    lastMonthSpend: "$100",
-  },
-  {
-    id: 6,
-    name: "John Doe",
-    email: "a@gmail.com",
-    phone: "1234567890",
-    businessName: "ABC",
-    signUpDate: "12/12/2021",
-    feeds: "12",
-    lastMonthSpend: "$100",
-  },
-  {
-    id: 7,
-    name: "John Doe",
-    email: "a@gmail.com",
-    phone: "1234567890",
-    businessName: "ABC",
-    signUpDate: "12/12/2021",
-    feeds: "12",
-    lastMonthSpend: "$100",
-  },
-];
+const users = ref([]);
+
+// API Call
+const partnerUsers = async () => {
+  try {
+    const res = await fetch(PARTNER_USERS);
+    users.value = res.data;
+  } catch (error) {
+    console.log("error", error);
+  }
+};
 
 const pastMonths = ref("Past Month");
 const showVCalender = ref(false);
-// const vCalenderShow = () => {
-//   showVCalender.value = true;
-// };
-// const vCalenderHide = () => {
-//   showVCalender.value = false;
-// };
+const selectedColor = ref("blue");
+const attrs = ref([
+  {
+    key: "test",
+    highlight: true,
+    dates: { start: new Date(2020, 3, 15), end: new Date(2019, 3, 19) },
+  },
+]);
+const range = ref({
+  start: new Date(2023, 0, 6),
+  end: new Date(2023, 0, 10),
+});
+const vCalenderShow = () => {
+  showVCalender.value = true;
+};
+const vCalenderHide = () => {
+  showVCalender.value = false;
+};
+const clearFilter = () => {
+  date.value = "Sign Up Date";
+  method.value = "State";
+};
+onMounted(() => {
+  partnerUsers();
+});
+watch(
+  () => range.value,
+  (value) => console.log(value, "here the update range")
+);
 </script>
 
 <template>
-  <div class="flex flex-col p-[30px] w-full h-full relative">
-    <div class="hidden md:flex flex-row items-center justify-between w-full">
+  <div class="flex flex-col md:p-[30px] p-4 w-full h-full relative">
+    <div
+      class="hidden md:flex flex-row items-center justify-between md:space-x-4 space-x-0 w-full"
+    >
       <BaseInputText
         id="search"
         type="text"
@@ -143,21 +104,30 @@ const showVCalender = ref(false);
           opacity="0.5"
           :options="methods"
         />
-        <BaseInputSelect
-          id="date"
-          v-model="date"
-          class="md:text-lg text-base"
-          text-input="textInput w-[200px] md:py-1.5 py-2"
-          toggle-button="toggleButton"
-          background="#7D80BD"
-          color="#ffffff"
-          caret-bg="#7D80BD"
-          caret-color="#ffffff"
-          :place-holder="'Sign Up Date'"
-          :place-holder-disabled="true"
-          opacity="0.5"
-          :options="dates"
-        />
+        <div
+          class="relative"
+          @click.stop="vCalenderShow()"
+          @mouseenter="vCalenderShow()"
+          @mouseleave.stop="vCalenderHide()"
+        >
+          <BaseButton
+            class="w-[180px] h-10 px-4 mx-auto text-[#ffffff] font-bold bg-[#7D80BD] border-none outline-none md:text-xl text-base text-center"
+            :text="'Sign Up Date'"
+          />
+          <div class="absolute flex right-0 z-[1]">
+            <VCalenderWithPreset
+              style="width: 460px"
+              :show-v-calender="showVCalender"
+              date-picker-color="search"
+              
+            />
+            <!-- @dateRange="pastMonthDateRageEvent" -->
+            <!--
+              @pastmonth="pastMonthsValue"
+              @hide-v-calender="vCalenderHide()"
+            -->
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -168,12 +138,12 @@ const showVCalender = ref(false);
     <Transition name="slideInOut">
       <div
         v-if="isUserModal"
-        class="z-30 flex md:hidden top-0 right-0 fixed flex-col space-y-4 w-full bg-[#171D26] rounded-b-3xl p-2.5 pb-8"
+        class="z-30 flex md:hidden top-0 right-0 fixed flex-col space-y-5 w-full bg-[#171D26] rounded-b-3xl p-2.5 pb-8"
       >
         <div
-          class="flex justify-between filter-head text-xl text-white px-2 mb-8 pt-2"
+          class="flex justify-between filter-head text-xl px-2 mb-8 pt-2 text-purple-midlight"
         >
-          <h5 class="text-2xl">Users</h5>
+          <h5 class="text-2xl">Filter</h5>
           <h2>
             <ClientOnly>
               <fa
@@ -231,14 +201,27 @@ const showVCalender = ref(false);
           opacity="0.5"
           :options="dates"
         />
+        <div class="pt-7 flex justify-between w-full space-x-[18px]">
+          <BaseButton
+            type="submit"
+            text="Clear"
+            class="text-[#7D80BD] border-2 border-[#7D80BD] py-2 whitespace-nowrap h-10 px-4 text-base md:text-xl font-semibold rounded-full w-1/2"
+            @click="clearFilter()"
+          />
+          <BaseButton
+            type="submit"
+            text="Filter"
+            class="bg-[#7D80BD] text-white border-2 border-[#7D80BD] py-2 whitespace-nowrap h-10 px-4 text-base md:text-xl font-semibold rounded-full w-1/2"
+          />
+        </div>
       </div>
     </Transition>
 
     <div class="web-card w-full h-full md:mt-[30px]">
       <div class="card-header">
-        <h3 class="card-title">Filter</h3>
+        <h3 class="card-title">Users</h3>
       </div>
-      <div class="card-body scroll">
+      <div class="card-body scroll md:h-[calc(100%-44px)] h-[calc(100%-40px)]">
         <table class="min-w-full table-wrapper">
           <thead>
             <tr class="bg-[#E8E8E8] border-b sticky top-0 left-0 z-1">
@@ -261,7 +244,7 @@ const showVCalender = ref(false);
                 <strong>Feeds</strong>
               </th>
               <th scope="col" class="table-th">
-                <strong>Last Month Spend</strong>
+                <strong>Status</strong>
               </th>
             </tr>
           </thead>
@@ -288,9 +271,9 @@ const showVCalender = ref(false);
                 <span class="table-span">{{ user.businessName }}</span>
               </td>
               <td class="table-td">
-                <span class="table-span">{{ user.signUpDate }}</span>
+                <span class="table-span">{{ user.dateJoined }}</span>
                 <!-- <DateTime
-                  :datetime="user.signUpDate"
+                  :datetime="user.date_joined"
                   format="MMMM, dd yyyy, hh:mm aa"
                   :show-time="false"
                   class="table-span"
@@ -300,7 +283,7 @@ const showVCalender = ref(false);
                 <span class="table-span">{{ user.feeds }}</span>
               </td>
               <td class="table-td">
-                <span class="table-span">{{ user.lastMonthSpend }}</span>
+                <span class="table-span">{{ user.status }}</span>
               </td>
             </tr>
           </tbody>
@@ -335,7 +318,7 @@ const showVCalender = ref(false);
 }
 .web-card {
   @apply bg-white rounded-3xl overflow-hidden;
-  height: calc(100% - 130px);
+  // height: calc(100% - 130px);
   box-shadow: 2px 2px 4px #2e2b2b29;
 }
 .card-header {
@@ -345,7 +328,6 @@ const showVCalender = ref(false);
   @apply text-light-white font-bold xl:text-xl md:text-lg text-base;
 }
 .card-body {
-  height: calc(100% - 43px);
   @apply overflow-auto scroll;
 }
 // .mobile-card-body {
@@ -385,17 +367,35 @@ const showVCalender = ref(false);
   @apply text-gray-500 xl:text-xl md:text-lg text-base;
 }
 .scroll {
-  scrollbar-color: #e0ad1f #ececec; /* Firefox 64 */
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-color: #7d80bd #ececec; /* Firefox 64 */
+  scrollbar-width: thin; /* Firefox 64 */
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #ececec;
+  }
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: #e0ad1f;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: #e0ad1f;
+    background: #7d80bd;
+    border-radius: 5px;
   }
 }
+// .scroll {
+//   scrollbar-color: #e0ad1f #ececec; /* Firefox 64 */
+//   /* Handle */
+//   &::-webkit-scrollbar-thumb {
+//     background: #e0ad1f;
+//   }
+
+//   /* Handle on hover */
+//   &::-webkit-scrollbar-thumb:hover {
+//     background: #e0ad1f;
+//   }
+// }
 [data-title]:after {
   color: #bb8b28;
   left: 100%;

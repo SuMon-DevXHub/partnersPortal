@@ -2,6 +2,7 @@
 
 <template>
   <div>
+    <LandingHeader />
     <slot />
   </div>
 </template>

@@ -84,7 +84,7 @@ h6 {
 
 .scroll {
   -ms-overflow-style: none; /* IE 11 */
-  scrollbar-color: #feebb3 #4d6e39; /* Firefox 64 */
+  scrollbar-color: #8db230 #ececec; /* Firefox 64 */
   scrollbar-width: thin; /* Firefox 64 */
   &::-webkit-scrollbar {
     width: 8px;
@@ -92,11 +92,11 @@ h6 {
   }
   /* Track */
   &::-webkit-scrollbar-track {
-    background: #4d6e39;
+    background: #ececec;
   }
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: #feebb3;
+    background: #8db230;
     border-radius: 5px;
   }
 }

@@ -67,6 +67,7 @@ const { errorMessages } = useInputValidations();
               ($event.target as HTMLInputElement).value
             )
           "
+          @keypress.enter="$emit('resendCode:modelValue')"
           v-bind="$attrs"
         />
       </div>

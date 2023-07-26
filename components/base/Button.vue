@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 export interface ButtonProps {
   text?: string;
   disabled?: boolean;

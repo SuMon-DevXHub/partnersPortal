@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="107.001" height="104" viewBox="0 0 107.001 104">
+  <defs>
+    <filter id="Path_2060" x="81.001" y="10" width="26" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feFlood flood-opacity="0.204"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_47277" data-name="Group 47277" transform="translate(-823 -234)">
+    <path id="ic_account_circle_24px" d="M54,2a52,52,0,1,0,52,52A52.019,52.019,0,0,0,54,2Zm0,15.6A15.6,15.6,0,1,1,38.4,33.2,15.579,15.579,0,0,1,54,17.6Zm0,73.84A37.443,37.443,0,0,1,22.8,74.7C22.956,64.348,43.6,58.68,54,58.68c10.348,0,31.044,5.668,31.2,16.016A37.443,37.443,0,0,1,54,91.44Z" transform="translate(821 232)" fill="#adaeb2"/>
+    <g transform="matrix(1, 0, 0, 1, 823, 234)" filter="url(#Path_2060)">
+      <path id="Path_2060-2" data-name="Path 2060" d="M10,0A10,10,0,1,0,20,10,10,10,0,0,0,10,0Zm4.754,7.2-.95.95L11.871,6.213l-.733.733L13.071,8.88,8.329,13.621,6.4,11.688l-.733.733L7.6,14.355l-.473.473-.009-.009a.374.374,0,0,1-.239.172l-1.8.4a.375.375,0,0,1-.447-.448l.4-1.8A.375.375,0,0,1,5.2,12.9l-.009-.009,7.631-7.632a.287.287,0,0,1,.405,0l1.528,1.528A.287.287,0,0,1,14.754,7.2Z" transform="translate(84 11)" fill="#8db230"/>
+    </g>
+  </g>
+</svg>

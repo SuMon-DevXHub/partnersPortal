@@ -1,0 +1,72 @@
+.phone-number-input {
+  $color: var(--color);
+  color: white;
+  text-align: center;
+
+  .input-wrapper {
+    $background-color: var(--background);
+    background-color: $background-color;
+    box-shadow: 0px 1px 3px rgba(142, 82, 0, 0.7);
+    @apply relative flex content-between rounded-full;
+
+    .country-input {
+      color: $color;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      direction: rtl;
+      @apply cursor-pointer text-right pl-10 rounded-tl-full rounded-bl-full font-semibold outline-none;
+
+      option {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        direction: ltr;
+        @apply font-semibold text-left pl-0;
+
+        &:disabled {
+          @apply text-gray-500;
+        }
+
+        &:focus,
+        &:checked,
+        &:hover {
+          color: white;
+          background-color: $color !important;
+        }
+      }
+    }
+
+    .select-toggle {
+      fill: $color;
+      @apply absolute top-2.5 left-4 pointer-events-none;
+    }
+
+    .number-input {
+      color: $color;
+      background-color: $background-color;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+.phoneNumberInputPartner {
+  $color: var(--color);
+  .input-wrapper {
+    @apply mt-2;
+    border-radius: 8px !important;
+    box-shadow: 0px 0px 0px;
+    .country-input {
+      @apply h-10 md:h-14 rounded-tl-lg rounded-bl-lg;
+      background-color: #e8ebed;
+    }
+    .select-toggle {
+      @apply top-0;
+    }
+  }
+}

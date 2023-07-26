@@ -1,10 +1,13 @@
-<script setup>
+<script setup lang="ts">
+import { PARTNER_INFO, PARTNER_PAYOUT } from "~/constants/urls";
 definePageMeta({
   layout: "home",
+  middleware: ["auth", "payment"],
 });
 
 const $config = useRuntimeConfig();
 const route = useRoute();
+const { fetch } = useFetched();
 useHead(() => ({
   title: "Partners Portal",
   link: [
@@ -15,57 +18,48 @@ useHead(() => ({
     },
   ],
 }));
+const nuxtApp = useNuxtApp();
 
-const portalHistory = ref({
-  totalIncome: "$3511.98",
-  monthlyNetProfit: "$129.98",
-  totalUsers: "10",
-  newUsers: "+1",
+const portalInfo = ref({});
+const payoutHistory = ref({});
+
+// API Call
+const partnerInfo = async () => {
+  try {
+    const res = await fetch(PARTNER_INFO, null, null);
+    portalInfo.value = res.data;
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+const partnerPayout = async () => {
+  try {
+    const res = await fetch(PARTNER_PAYOUT, null, null);
+    nuxtApp.$toast("clear");
+    res.data.length > 0
+      ? (payoutHistory.value = res.data)
+      : nuxtApp.$toast("success", {
+          message: "There have no payout history.",
+          className: "toasted-bg-archive",
+        });
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+const dateFormat = (date: string) => {
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  return new Date(date).toLocaleDateString(undefined, options);
+};
+
+onMounted(() => {
+  partnerInfo();
+  partnerPayout();
 });
-const payoutHistory = ref([
-  {
-    date: "Jan 22, 2022",
-    amount: "$500",
-    paymentethod: "PayPal",
-    status: "Approved",
-    approved: "",
-  },
-  {
-    date: "Jan 22, 2022",
-    amount: "$700",
-    paymentethod: "Bank Transfer",
-    status: "Pending",
-    approved: "",
-  },
-  {
-    date: "Jan 22, 2022",
-    amount: "$500",
-    paymentethod: "PayPal",
-    status: "Approved",
-    approved: "",
-  },
-  {
-    date: "Jan 22, 2022",
-    amount: "$750",
-    paymentethod: "Bank Transfer",
-    status: "Pending",
-    approved: "",
-  },
-  {
-    date: "Jan 22, 2022",
-    amount: "$500",
-    paymentethod: "PayPal",
-    status: "Approved",
-    approved: "",
-  },
-  {
-    date: "Jan 22, 2022",
-    amount: "$750",
-    paymentethod: "Bank Transfer",
-    status: "Pending",
-    approved: "",
-  },
-]);
 </script>
 
 <template>
@@ -99,34 +93,34 @@ const payoutHistory = ref([
             </ClientOnly>
           </div>
           <div class="text-orange-dark md:text-center text-left">
-            <p class="xl:text-xl md:text-base text-base">
-              {{ portalHistory.totalIncome }}
+            <p class="xl:text-xl md:text-base text-base font-medium">
+              ${{ portalInfo.total_income | 0 }}
             </p>
-            <h2 class="xl:text-2xl md:text-base text-xs font-medium">
+            <h2 class="xl:text-2xl md:text-base text-xs font-normal">
               Total Income
             </h2>
           </div>
           <div class="text-orange-dark md:text-center text-right">
-            <p class="xl:text-xl md:text-base text-base">
-              {{ portalHistory.monthlyNetProfit }}
+            <p class="xl:text-xl md:text-base text-base font-medium">
+              ${{ portalInfo.monthly_income | 0 }}
             </p>
-            <h2 class="xl:text-2xl md:text-base text-xs font-medium">
+            <h2 class="xl:text-2xl md:text-base text-xs font-normal">
               Monthly Net Profit
             </h2>
           </div>
           <div class="text-orange-dark text-center md:block hidden">
-            <p class="xl:text-xl md:text-base text-base">
-              {{ portalHistory.totalUsers }}
+            <p class="xl:text-xl md:text-base text-base font-medium">
+              {{ portalInfo.total_users | 0 }}
             </p>
-            <h2 class="xl:text-2xl md:text-base text-base font-medium">
+            <h2 class="xl:text-2xl md:text-base text-base font-normal">
               Total Users
             </h2>
           </div>
           <div class="text-orange-dark text-right md:block hidden">
-            <p class="xl:text-xl md:text-base text-base">
-              {{ portalHistory.newUsers }}
+            <p class="xl:text-xl md:text-base text-base font-medium">
+              {{ portalInfo.new_users | 0 }}
             </p>
-            <h2 class="xl:text-2xl md:text-base text-base font-medium">
+            <h2 class="xl:text-2xl md:text-base text-base font-normal">
               New Users
             </h2>
           </div>
@@ -135,18 +129,18 @@ const payoutHistory = ref([
           class="flex justify-between flex-nowrap lg:p-[30px] p-[20px] pt-[10px] pb-[10px] lg:space-x-0 space-x-4 md:hidden items-center"
         >
           <div class="text-orange-dark md:text-center text-left">
-            <p class="xl:text-xl md:text-lg text-base">
-              {{ portalHistory.totalUsers }}
+            <p class="xl:text-xl md:text-lg text-base font-medium">
+              {{ portalInfo.total_users }}
             </p>
-            <h2 class="xl:text-2xl md:text-lg text-xs font-medium">
+            <h2 class="xl:text-2xl md:text-lg text-xs font-normal">
               Total Users
             </h2>
           </div>
           <div class="text-orange-dark text-right">
-            <p class="xl:text-xl md:text-lg text-base">
-              {{ portalHistory.newUsers }}
+            <p class="xl:text-xl md:text-lg text-base font-medium">
+              {{ portalInfo.new_users }}
             </p>
-            <h2 class="xl:text-2xl md:text-lg text-xs font-medium">
+            <h2 class="xl:text-2xl md:text-lg text-xs font-normal">
               New Users
             </h2>
           </div>
@@ -194,13 +188,15 @@ const payoutHistory = ref([
                   :class="index % 2 === 0 ? 'bg-white' : 'bg-[#E8E8E8]'"
                 >
                   <td class="table-td">
-                    <span class="table-span">{{ payout.date }}</span>
+                    <span class="table-span">{{
+                      dateFormat(payout.created_at)
+                    }}</span>
                   </td>
                   <td class="table-td">
-                    <span class="table-span">{{ payout.amount }}</span>
+                    <span class="table-span">{{ payout.total }}</span>
                   </td>
                   <td class="table-td">
-                    <span class="table-span">{{ payout.paymentethod }}</span>
+                    <span class="table-span">{{ payout.payment_method }}</span>
                   </td>
                   <td class="table-td">
                     <span class="table-span">{{ payout.status }}</span>
@@ -282,7 +278,7 @@ const payoutHistory = ref([
 }
 .scroll {
   -ms-overflow-style: none; /* IE 11 */
-  scrollbar-color: #e4801d #feebb3; /* Firefox 64 */
+  scrollbar-color: #e4801d #ececec; /* Firefox 64 */
   scrollbar-width: thin; /* Firefox 64 */
   &::-webkit-scrollbar {
     width: 8px;
@@ -290,7 +286,7 @@ const payoutHistory = ref([
   }
   /* Track */
   &::-webkit-scrollbar-track {
-    background: #feebb3;
+    background: #ececec;
   }
   /* Handle */
   &::-webkit-scrollbar-thumb {

@@ -40,6 +40,7 @@ export default <Partial<Config>>{
         },
         orange: {
           dark: "#E4801D",
+          midlight: '#E0AD1F',
         },
         green: {
           1100: "#8DB230",

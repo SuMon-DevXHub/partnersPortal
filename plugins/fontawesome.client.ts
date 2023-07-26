@@ -24,6 +24,7 @@ import {
   faDollarSign,
   faDownload,
   faBars,
+  faMinus,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -46,7 +47,8 @@ library.add(
   faCheck,
   faDollarSign,
   faDownload,
-  faBars
+  faBars,
+  faMinus,
 );
 
 export default defineNuxtPlugin((nuxtApp) => {

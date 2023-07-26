@@ -4,13 +4,18 @@ import { storeToRefs } from "pinia";
 import { useHeaderStore } from "~/stores/the-header";
 import { useFooterStore } from "~/stores/the-footer";
 import { useProfileStore } from "~/stores/the-profile";
+import { usePageColorStore } from "~/stores/pagecolor";
 
 const logo = ref(Logo);
 // pinia
 const { setIsUserModal } = useHeaderStore();
 const { setIsShowFooter } = useFooterStore();
 const { setIsShowProfile } = useProfileStore();
+const { userInfo } = storeToRefs(useProfileStore());
 const { isShowFooter } = storeToRefs(useFooterStore());
+const { getColor } = storeToRefs(usePageColorStore());
+const firstName = useAuth().userInfo.value.firstName;
+const lastName = useAuth().userInfo.value.lastName;
 </script>
 
 <template>
@@ -25,12 +30,13 @@ const { isShowFooter } = storeToRefs(useFooterStore());
               class="flex flex-row items-center space-x-3"
               @click.stop="setIsShowProfile(true)"
             >
-              <p class="text-xl font-bold lg:block hidden text-[#F1F2F6]">
-                Hi, Chad Gordon
+              <p class="text-xl font-bold md:block hidden text-[#F1F2F6]">
+                {{ userInfo ? userInfo.firstName : firstName }}
+                {{ userInfo ? userInfo.lastName : lastName }}
               </p>
               <ClientOnly>
                 <fa
-                  :style="{ color: `#e4801d` }"
+                  :style="{ color: getColor.backgroundColor }"
                   class="text-3xl mr-2"
                   :icon="['fas', 'user-circle']"
                 />
@@ -57,13 +63,7 @@ const { isShowFooter } = storeToRefs(useFooterStore());
         <ClientOnly>
           <fa
             class="w-full h-full"
-            :class="
-              $route.name === 'partners-portal'
-                ? 'text-[#e4801d]'
-                : $route.matched[0].path === '/profile'
-                ? 'text-[#8DB230]'
-                : 'text-[#7D80BD]'
-            "
+            :style="{ color: getColor.backgroundColor }"
             :icon="['fas', 'fa-bars']"
           />
         </ClientOnly>
@@ -87,7 +87,7 @@ const { isShowFooter } = storeToRefs(useFooterStore());
             :class="
               $route.name === 'partners-portal'
                 ? 'text-[#e4801d]'
-                : $route.matched[0].path === '/profile'
+                : $route.matched[0].name === 'partners-profile'
                 ? 'text-[#8DB230]'
                 : 'text-[#7D80BD]'
             "
@@ -112,13 +112,7 @@ const { isShowFooter } = storeToRefs(useFooterStore());
         <div @click.stop="setIsShowProfile(true)">
           <ClientOnly>
             <fa
-              :class="
-                $route.name === 'partners-portal'
-                  ? 'text-[#e4801d]'
-                  : $route.matched[0].path === '/profile'
-                  ? 'text-[#8DB230]'
-                  : 'text-[#7D80BD]'
-              "
+              :style="{ color: getColor.backgroundColor }"
               class="text-2xl text-right"
               :icon="['fas', 'user-circle']"
             />

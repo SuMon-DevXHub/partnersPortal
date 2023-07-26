@@ -48,9 +48,12 @@ const selectOption = () => {
 // watcher
 watch(
   () => props.modelValue,
-  () => {
-    toggleSelect.value = false;
-  }
+  (value) => {
+    setTimeout(() => {
+      toggleSelect.value = false;
+    });
+  },
+  { deep: true }
 );
 // methods
 const { errorMessages } = useInputValidations();
