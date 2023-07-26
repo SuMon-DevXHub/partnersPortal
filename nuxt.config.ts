@@ -22,7 +22,7 @@ export default defineNuxtConfig({
         {
           key: "canonical",
           rel: "canonical",
-          href: process.env.NUXT_SITE_URL,
+          href: 'https://parterns-portal-devxhub.netlify.app/',
         },
       ],
     },
@@ -32,18 +32,18 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    apiUrl: process.env.NUXT_API_BASE_URL,
+    apiUrl: 'https://dev-api.sharparchive.com/api',
     google: {
       clientId: "client-id",
       clientSecret: "client-secret",
     },
 
     public: {
-      appName: process.env.NUXT_APP_NAME,
-      siteUrl: process.env.NUXT_SITE_URL,
-      apiUrl: process.env.NUXT_API_BASE_URL,
-      googleMapKey: process.env.NUXT_GOOGLE_MAP_KEY,
-      stripeKey: process.env.STRIPE_KEY,
+      appName: 'Sharp Archive',
+      siteUrl: 'https://parterns-portal-devxhub.netlify.app/',
+      apiUrl: 'https://dev-api.sharparchive.com/api',
+      googleMapKey: 'AIzaSyBMQgZvqzCVG0FFT5RsE59wjEYzQLncahI',
+      stripeKey: 'pk_test_51JPtOfFxsmIraXHUAgpplP9Gxn4LxlAnIgPgEaP5ruKyycAdJvv8ZrHHuPq11EQIDPSzDDjen1hZzF8cRiMqHOQg00kf7ORCg1',
     },
   },
   // devtools: { enabled: true },
@@ -72,7 +72,7 @@ export default defineNuxtConfig({
   // },
   routeRules: {
     "/server/**": {
-      proxy: { to: `${process.env.NUXT_API_BASE_URL}/**` },
+      proxy: { to: `https://dev-api.sharparchive.com/api/**` },
       // cache: {
       //   maxAge: 60 * 1
       // }
